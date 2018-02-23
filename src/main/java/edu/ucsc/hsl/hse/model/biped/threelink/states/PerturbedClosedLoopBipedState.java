@@ -1,6 +1,6 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.states;
 
-import edu.ucsc.cross.hse.core.modelling.DataStructure;
+import edu.ucsc.cross.hse.core.modeling.DataStructure;
 
 public class PerturbedClosedLoopBipedState extends DataStructure// ClosedLoopBipedState
 {

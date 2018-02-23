@@ -3,7 +3,7 @@ package edu.ucsc.hsl.hse.model.biped.threelink.states;
 import java.util.HashMap;
 
 import Jama.Matrix;
-import edu.ucsc.cross.hse.core.modelling.DataStructure;
+import edu.ucsc.cross.hse.core.modeling.DataStructure;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedMotion;
