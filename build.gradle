@@ -26,8 +26,9 @@ repositories {
 dependencies {
     // The production code uses Guava
     compile 'com.google.guava:guava:20.0'
-  compile "com.github.HybridSystemsEnvironment:HybridSystemsEnvironment:-SNAPSHOT"
-   compile "com.github.HybridSystemsEnvironment:MathToolbox:-SNAPSHOT"
+  	compile "com.github.HybridSystemsEnvironment:HybridSystemsEnvironment:1.0.0"
+  	compile "com.github.HybridSystemsEnvironment:MathToolbox:-SNAPSHOT"
+      	compile 'net.sourceforge.jeuclid:jeuclid-core:3.1.9'
   
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'

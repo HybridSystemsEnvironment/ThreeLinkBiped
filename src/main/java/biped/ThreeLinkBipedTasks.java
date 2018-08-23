@@ -1,3 +1,4 @@
+
 package biped;
 
 import java.awt.BasicStroke;
@@ -12,16 +13,16 @@ import edu.ucsc.cross.hse.core.chart.ChartUtils;
 import edu.ucsc.cross.hse.core.chart.RendererConfiguration;
 import edu.ucsc.cross.hse.core.environment.HSEnvironment;
 import edu.ucsc.cross.hse.core.figure.Figure;
-import edu.ucsc.cross.hse.core.figure.GraphicFormat;
-import edu.ucsc.cross.hse.core.file.FileBrowser;
 import edu.ucsc.cross.hse.core.logging.Console;
 import edu.ucsc.cross.hse.core.modeling.HybridSystem;
 import edu.ucsc.cross.hse.core.trajectory.HybridTime;
 import edu.ucsc.cross.hse.core.trajectory.TrajectorySet;
+import edu.ucsc.hsl.hse.model.biped.threelink.computors.ControllerConstraint;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedReferenceControl;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedTrackingController;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedVirtualControl;
 import edu.ucsc.hsl.hse.model.biped.threelink.factories.BipedSettingFactory;
+import edu.ucsc.hsl.hse.model.biped.threelink.parameters.ActuatorConstraint;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.PerturbationParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.BipedState;
@@ -33,22 +34,20 @@ import edu.ucsc.hsl.hse.model.biped.threelink.systems.ClosedLoopBipedSystem;
 import edu.ucsc.hsl.hse.model.biped.threelink.systems.PerturbedClosedLoopSystem;
 import edu.ucsc.hsl.hse.model.biped.threelink.systems.ReferenceSystem;
 
-public class ThreeLinkBipedTasks
-{
+public class ThreeLinkBipedTasks {
 
 	/*
 	 * Main class needed to run java application
 	 */
-	public static void main(String args[])
-	{
+	public static void main(String args[]) {
+
 		Console.setSettings(BipedSettingFactory.getNonDebugConsoleSettings());
 		runPerturbedClosedLoopSystemWithRandomizedIC(0.8);
 	}
 
-	public void openHSEnvironmentAndPlot()
-	{
+	public void openHSEnvironmentAndPlot() {
 
-		//		HSEnvironment env = HSEnvironment.loadFromFile(FileBrowser.load());
+		// HSEnvironment env = HSEnvironment.loadFromFile(FileBrowser.load());
 
 		// File datFile = new FileChooser().showOpenDialog(new Stage());
 		// HSEnvironmentData dat = DataMonitor.getCSVData(datFile);
@@ -58,13 +57,13 @@ public class ThreeLinkBipedTasks
 		// System.out.println(XMLParser.serializeObject(env));
 		// statesAndTimerChart().plot(env);
 		// env.generateOutputs();
-		//	limbAnglesAndVelocities().createPlot(env);
+		// limbAnglesAndVelocities().createPlot(env);
 		// env.add(HybridChart2);// .createChart(env);
 		// env.generateOutputs();
 	}
 
-	public static ReferenceSystem getTestReferenceSystem()
-	{
+	public static ReferenceSystem getTestReferenceSystem() {
+
 		VirtualBipedState state = VirtualBipedState.getTestState();
 		BipedParameters params = BipedParameters.getTestParams();
 		BipedReferenceControl controller = new BipedReferenceControl(state, params);
@@ -76,8 +75,7 @@ public class ThreeLinkBipedTasks
 	}
 
 	public static ClosedLoopBipedSystem getClosedLoopSystemWithRandomizedStates(BipedParameters params,
-	ReferenceSystem ref)
-	{
+			ReferenceSystem ref) {
 
 		BipedState bip = BipedState.getRandomizedState(params);
 
@@ -91,32 +89,48 @@ public class ThreeLinkBipedTasks
 		vbip.getProperties().setName("Virtual System");
 
 		ClosedLoopBipedSystem sys = new ClosedLoopBipedSystem(new ClosedLoopBipedState(bip, vbip),
-		ref.getComponents().getState(), params, vc, tc);
+				ref.getComponents().getState(), params, vc, tc);
 		System.out.println(XMLParser.serializeObject(sys));
 		return sys;// new HybridSystem<?>[]
 		// { sys, ref };
 	}
 
 	public static PerturbedClosedLoopSystem getClosedLoopSystemWithPerturbations(BipedState plant,
-	VirtualBipedState virtual, VirtualBipedState reference, BipedParameters params,
-	Double maximum_perturbation_percentage)
-	{
+			VirtualBipedState virtual, VirtualBipedState reference, BipedParameters params,
+			Double maximum_perturbation_percentage) {
 
 		BipedVirtualControl vc = new BipedVirtualControl(plant, virtual, reference, params);
 		BipedTrackingController tc = new BipedTrackingController(plant, virtual, vc, params);
 		PerturbationParameters pParams = new PerturbationParameters(maximum_perturbation_percentage);
 		PerturbationState ps = new PerturbationState(
-		(Math.random() * pParams.perturbationPercentage) * params.stepAngle);
+				(Math.random() * pParams.perturbationPercentage) * params.stepAngle);
 
 		PerturbedClosedLoopSystem sys = new PerturbedClosedLoopSystem(
-		new PerturbedClosedLoopBipedState(plant, virtual, ps), reference, params, vc, tc, pParams);
+				new PerturbedClosedLoopBipedState(plant, virtual, ps), reference, params, vc, tc, pParams);
+		System.out.println(XMLParser.serializeObject(sys));
+		return sys;
+	}
+
+	public static PerturbedClosedLoopSystem getClosedLoopSystemWithPerturbations(BipedState plant,
+			VirtualBipedState virtual, VirtualBipedState reference, BipedParameters params,
+			Double maximum_perturbation_percentage, ActuatorConstraint constraint) {
+
+		BipedVirtualControl vc = new BipedVirtualControl(plant, virtual, reference, params);
+		BipedTrackingController tc = new BipedTrackingController(plant, virtual, vc, params);
+		ControllerConstraint controlConst = new ControllerConstraint(tc, constraint);
+		PerturbationParameters pParams = new PerturbationParameters(maximum_perturbation_percentage);
+		PerturbationState ps = new PerturbationState(
+				(Math.random() * pParams.perturbationPercentage) * params.stepAngle);
+
+		PerturbedClosedLoopSystem sys = new PerturbedClosedLoopSystem(
+				new PerturbedClosedLoopBipedState(plant, virtual, ps), reference, params, vc, controlConst, pParams);
 		System.out.println(XMLParser.serializeObject(sys));
 		return sys;
 	}
 
 	public static HybridSystem<?>[] getPerturbedClosedLoopSystemWithRandomizedIC(BipedParameters params,
-	Double maximum_perturbation_percentage)
-	{
+			Double maximum_perturbation_percentage) {
+
 		BipedState plant = BipedState.getRandomizedState(params);
 		VirtualBipedState virtual = VirtualBipedState.getRandomizedState(params);
 		VirtualBipedState reference = VirtualBipedState.getRandomizedState(params);
@@ -125,65 +139,86 @@ public class ThreeLinkBipedTasks
 		ReferenceSystem referenceSys = new ReferenceSystem(reference, params, controller);
 
 		PerturbedClosedLoopSystem perturbationSystem = getClosedLoopSystemWithPerturbations(plant, virtual, reference,
-		params, maximum_perturbation_percentage);
+				params, maximum_perturbation_percentage);
 
 		plant.getProperties().setName("Plant");
 		virtual.getProperties().setName("Virtual");
 		perturbationSystem.getComponents().getState().getProperties().setName("Perturbation");
 		reference.getProperties().setName("Reference");
 
-		return new HybridSystem<?>[]
-		{ referenceSys, perturbationSystem };
+		return new HybridSystem<?>[] { referenceSys, perturbationSystem };
 	}
 
-	public static void runPerturbedClosedLoopSystemWithRandomizedIC(double perturbation_percentage)
-	{
+	public static HybridSystem<?>[] getPerturbedClosedLoopSystemWithRandomizedIC(BipedParameters params,
+			Double maximum_perturbation_percentage, ActuatorConstraint constraint) {
+
+		BipedState plant = BipedState.getRandomizedState(params);
+		VirtualBipedState virtual = VirtualBipedState.getRandomizedState(params);
+		VirtualBipedState reference = VirtualBipedState.getRandomizedState(params);
+		virtual.trajTimer = params.getStepTime() * ((Math.random() * .8) + .2);
+		BipedReferenceControl controller = new BipedReferenceControl(reference, params);
+		ReferenceSystem referenceSys = new ReferenceSystem(reference, params, controller);
+
+		PerturbedClosedLoopSystem perturbationSystem = getClosedLoopSystemWithPerturbations(plant, virtual, reference,
+				params, maximum_perturbation_percentage, constraint);
+
+		plant.getProperties().setName("Plant");
+		virtual.getProperties().setName("Virtual");
+		perturbationSystem.getComponents().getState().getProperties().setName("Perturbation");
+		reference.getProperties().setName("Reference");
+
+		return new HybridSystem<?>[] { referenceSys, perturbationSystem };
+	}
+
+	public static void runPerturbedClosedLoopSystemWithRandomizedIC(double perturbation_percentage) {
+
 		BipedParameters parameters = BipedParameters.getTestParams();
 		HybridSystem<?>[] systems = getPerturbedClosedLoopSystemWithRandomizedIC(parameters, perturbation_percentage);
 		HSEnvironment env = new HSEnvironment();
+		env.getSettings().dataPointInterval = .1;
 		env.getSystems().add(systems[1]);
 		env.getSystems().add(systems[0]);
-		//HSEFile.saveToNewFile(FileBrowser.save(), env);
+		// HSEFile.saveToNewFile(FileBrowser.save(), env);
 		TrajectorySet traj = env.run(18.0, 100);
-		//generateBipedLimbStateFigure2by3Figure(traj).exportToFile(FileBrowser.save(), GraphicFormat.EPS);
-		generateBipedLimbStateFigureVerticalPerturbed(traj).exportToFile(FileBrowser.save(), GraphicFormat.EPS);
+		// generateBipedLimbStateFigure2by3Figure(traj).exportToFile(FileBrowser.save(),
+		// GraphicFormat.EPS);
+		generateBipedLimbStateFigureVerticalPerturbed(traj).display();// .exportToFile(FileBrowser.save(),
+																		// GraphicFormat.EPS);
 	}
 
-	public static RendererConfiguration getDefaultBipedRenderer()
-	{
+	public static RendererConfiguration getDefaultBipedRenderer() {
+
 		RendererConfiguration bipedRend = new RendererConfiguration();
 		bipedRend.assignSeriesColor("Plant", Color.BLUE);
 		bipedRend.assignSeriesColor("Virtual", Color.GREEN);
 		bipedRend.assignSeriesColor("Reference", Color.RED);
 		bipedRend.assignSeriesColor("Perturbation", Color.MAGENTA);
-		float dash[] =
-		{ 10.0f };
+		float dash[] = { 10.0f };
 		BasicStroke virtual = new BasicStroke(3.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
 		bipedRend.assignSeriesStroke("Virtual", virtual);
-		float[] dashingPattern3 =
-		{ 10f, 10f, 1f, 10f };
+		float[] dashingPattern3 = { 10f, 10f, 1f, 10f };
 		BasicStroke stroke3 = new BasicStroke(3.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 1.0f,
-		dashingPattern3, 0.0f);
+				dashingPattern3, 0.0f);
 		bipedRend.assignSeriesStroke("Reference", stroke3);
 		return bipedRend;
 	}
 
-	public static Figure generateBipedLimbStateFigure2by3Figure(TrajectorySet solution)
-	{
+	public static Figure generateBipedLimbStateFigure2by3Figure(TrajectorySet solution) {
+
 		Figure figure = new Figure(1000, 600);
 
 		ChartPanel pA = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel sA = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel tA = ChartUtils.createPanel(solution, HybridTime.TIME, "torsoAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel pV = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegVelocity", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel sV = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegVelocity", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel tV = ChartUtils.createPanel(solution, HybridTime.TIME, "torsoVelocity", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 
 		figure.addComponent(1, 0, pA);
 		figure.addComponent(2, 0, sA);
@@ -198,27 +233,27 @@ public class ThreeLinkBipedTasks
 		ChartUtils.configureLabels(pV, " ", " ", null, false);
 		ChartUtils.configureLabels(sV, " ", " ", null, false);
 		ChartUtils.configureLabels(tV, " ", " ", null, false);
-		//		ChartUtils.configureLabels(pA, null, " ", null, false);
-		//		ChartUtils.configureLabels(sA, null, " ", null, false);
-		//		ChartUtils.configureLabels(tA, null, " ", null, false);
-		//		ChartUtils.configureLabels(pV, null, " ", null, false);
-		//		ChartUtils.configureLabels(sV, null, " ", null, false);
-		//		ChartUtils.configureLabels(tV, null, " ", null, false);
+		// ChartUtils.configureLabels(pA, null, " ", null, false);
+		// ChartUtils.configureLabels(sA, null, " ", null, false);
+		// ChartUtils.configureLabels(tA, null, " ", null, false);
+		// ChartUtils.configureLabels(pV, null, " ", null, false);
+		// ChartUtils.configureLabels(sV, null, " ", null, false);
+		// ChartUtils.configureLabels(tV, null, " ", null, false);
 		figure.getTitle().setText(null);
 		return figure;
 	}
 
-	public static Figure generateBipedLegAngleFigPerturbed(TrajectorySet solution)
-	{
+	public static Figure generateBipedLegAngleFigPerturbed(TrajectorySet solution) {
+
 		Figure figure = new Figure(1000, 600);
 
 		ChartPanel pA = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel sA = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 
 		ChartPanel pert = ChartUtils.createPanel(solution, HybridTime.TIME, "perturbationAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		figure.addComponent(0, 0, pA);
 		figure.addComponent(0, 1, sA);
 
@@ -231,24 +266,24 @@ public class ThreeLinkBipedTasks
 		return figure;
 	}
 
-	public static Figure generateBipedLimbStateFigureVerticalPerturbed(TrajectorySet solution)
-	{
+	public static Figure generateBipedLimbStateFigureVerticalPerturbed(TrajectorySet solution) {
+
 		Figure figure = new Figure(1000, 1400);
 
 		ChartPanel pA = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel sA = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel tA = ChartUtils.createPanel(solution, HybridTime.TIME, "torsoAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel pV = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegVelocity", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel sV = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegVelocity", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel tV = ChartUtils.createPanel(solution, HybridTime.TIME, "torsoVelocity", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		ChartPanel pert = ChartUtils.createPanel(solution, HybridTime.TIME, "perturbationAngle", ChartType.LINE,
-		getDefaultBipedRenderer(), null);
+				getDefaultBipedRenderer(), null);
 		figure.addComponent(0, 1, pA);
 		figure.addComponent(0, 2, sA);
 		figure.addComponent(0, 3, tA);
@@ -257,13 +292,13 @@ public class ThreeLinkBipedTasks
 		figure.addComponent(0, 6, tV);
 		figure.addComponent(0, 7, pert);
 
-		//		ChartUtils.configureLabels(pA, " ", " ", null, false);
-		//		ChartUtils.configureLabels(sA, " ", " ", null, false);
-		//		ChartUtils.configureLabels(tA, " ", " ", null, false);
-		//		ChartUtils.configureLabels(pV, " ", " ", null, false);
-		//		ChartUtils.configureLabels(sV, " ", " ", null, false);
-		//		ChartUtils.configureLabels(tV, " ", " ", null, false);
-		//		ChartUtils.configureLabels(pert, " ", " ", null, false);
+		// ChartUtils.configureLabels(pA, " ", " ", null, false);
+		// ChartUtils.configureLabels(sA, " ", " ", null, false);
+		// ChartUtils.configureLabels(tA, " ", " ", null, false);
+		// ChartUtils.configureLabels(pV, " ", " ", null, false);
+		// ChartUtils.configureLabels(sV, " ", " ", null, false);
+		// ChartUtils.configureLabels(tV, " ", " ", null, false);
+		// ChartUtils.configureLabels(pert, " ", " ", null, false);
 
 		ChartUtils.configureLabels(pA, null, " ", null, false);
 		ChartUtils.configureLabels(sA, null, " ", null, false);

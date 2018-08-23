@@ -1,18 +1,17 @@
+
 package edu.ucsc.hsl.hse.model.biped.threelink.specifications;
 
-public enum BipedLimb
-{
-	SWING_LEG(
-		"Swing Leg"),
-	PLANTED_LEG(
-		"Planted Leg"),
-	TORSO(
-		"Torso");
+public enum BipedLimb {
+	SWING_LEG("Swing Leg", 0), PLANTED_LEG("Planted Leg", 1), TORSO("Torso", 2);
 
 	public final String name;
 
-	private BipedLimb(String new_name)
-	{
+	public final int vectorIndex;
+
+	private BipedLimb(String new_name, int index) {
+
 		name = new_name;
+		vectorIndex = index;
 	}
+
 }
