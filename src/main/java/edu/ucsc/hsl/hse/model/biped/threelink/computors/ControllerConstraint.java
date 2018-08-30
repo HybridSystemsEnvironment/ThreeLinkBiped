@@ -2,17 +2,17 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.computors;
 
 import Jama.Matrix;
-import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedDynamicsController;
+import biped.hybridsystem.Controller;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.ActuatorConstraint;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb;
 
-public class ControllerConstraint implements BipedDynamicsController {
+public class ControllerConstraint implements Controller {
 
-	public BipedDynamicsController controller;
+	public Controller controller;
 
 	public ActuatorConstraint constraint;
 
-	public ControllerConstraint(BipedDynamicsController controller, ActuatorConstraint constraint) {
+	public ControllerConstraint(Controller controller, ActuatorConstraint constraint) {
 
 		this.controller = controller;
 		this.constraint = constraint;

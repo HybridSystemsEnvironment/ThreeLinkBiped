@@ -1,5 +1,5 @@
 
-package biped;
+package z.bipedapp;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -8,6 +8,7 @@ import org.jfree.chart.ChartPanel;
 
 import com.be3short.obj.modification.XMLParser;
 
+import biped.virtual.hybridsystem.BipedReferenceControl;
 import edu.ucsc.cross.hse.core.chart.ChartType;
 import edu.ucsc.cross.hse.core.chart.ChartUtils;
 import edu.ucsc.cross.hse.core.chart.RendererConfiguration;
@@ -18,7 +19,6 @@ import edu.ucsc.cross.hse.core.modeling.HybridSystem;
 import edu.ucsc.cross.hse.core.trajectory.HybridTime;
 import edu.ucsc.cross.hse.core.trajectory.TrajectorySet;
 import edu.ucsc.hsl.hse.model.biped.threelink.computors.ControllerConstraint;
-import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedReferenceControl;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedTrackingController;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedVirtualControl;
 import edu.ucsc.hsl.hse.model.biped.threelink.factories.BipedSettingFactory;

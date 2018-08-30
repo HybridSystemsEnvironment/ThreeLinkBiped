@@ -1,5 +1,5 @@
 
-package biped;
+package z.bipedapp;
 
 import org.jfree.chart.ChartPanel;
 

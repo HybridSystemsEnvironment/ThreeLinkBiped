@@ -1,7 +1,7 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.states;
 
+import biped.virtual.hybridsystem.TrajectoryParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
-import edu.ucsc.hsl.hse.model.biped.threelink.parameters.TrajectoryParameters;
 
 public class VirtualBipedState extends BipedState
 {

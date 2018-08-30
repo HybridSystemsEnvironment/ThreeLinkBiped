@@ -1,0 +1,5 @@
+[06:31:07.700][info] Environment started  [14/246 mB]
+[06:31:07.773][info] status: 0.00%  complete : sim time = 0.00 : jumps = 0  [18/246 mB]
+[06:31:17.701][info] monitor : NaN% complete : sim time = NaN : jumps = 1  [99/290 mB]
+[06:31:22.484][info] Environment stopped, total runtime = 14.791585807004594 seconds  [79/261 mB]
+[06:31:30.751][info] Successfully saved global storage file /Users/beshort/Desktop/ddd/Untitled.xml  [27/178 mB]

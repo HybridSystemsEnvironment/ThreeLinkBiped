@@ -1,16 +1,17 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.controllers;
 
 import Jama.Matrix;
-import edu.ucsc.hsl.hse.model.biped.threelink.computors.BipedComputer;
+import biped.computations.BipedComputer;
+import biped.hybridsystem.Controller;
+import biped.virtual.hybridsystem.TrajectoryParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.computors.EquilibriumComputer;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
-import edu.ucsc.hsl.hse.model.biped.threelink.parameters.TrajectoryParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedMotion;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.BipedState;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.VirtualBipedState;
 
-public class BipedVirtualControl implements BipedDynamicsController
+public class BipedVirtualControl implements Controller
 {
 
 	public BipedState realBiped;

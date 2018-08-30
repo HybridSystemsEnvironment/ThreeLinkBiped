@@ -1,8 +1,8 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.systems;
 
+import biped.computations.BipedComputer;
+import biped.virtual.hybridsystem.BipedReferenceControl;
 import edu.ucsc.cross.hse.core.modeling.HybridSystem;
-import edu.ucsc.hsl.hse.model.biped.threelink.computors.BipedComputer;
-import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedReferenceControl;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.BipedState;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.VirtualBipedState;

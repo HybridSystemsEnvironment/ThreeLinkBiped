@@ -1,21 +1,21 @@
 
-package edu.ucsc.hsl.hse.model.biped.threelink.computors;
+package biped.computations;
 
 import java.util.HashMap;
 
 import Jama.Matrix;
+import biped.hybridsystem.Controller;
+import biped.hybridsystem.Parameters;
+import biped.hybridsystem.BipedState;
 import edu.ucsc.hsl.hse.model.biped.threelink.factories.Zero;
-import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedMotion;
-import edu.ucsc.hsl.hse.model.biped.threelink.states.BipedState;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.PerturbationState;
-import edu.ucsc.hsl.hse.model.biped.threelink.states.VirtualBipedState;
 import edu.ucsc.hsl.hse.tools.math.shortcuts.MathShortcuts;
 
 public class BipedComputer {
 
-	public static Matrix computeJumpMatrixD(BipedState biped, BipedParameters params) {
+	public static Matrix computeJumpMatrixD(BipedState biped, Parameters params) {
 
 		// COMPUTEJUMPMATRIX Computes the expanded inertial matrix for jumps
 		double theta1 = biped.plantedLegAngle;
@@ -62,7 +62,7 @@ public class BipedComputer {
 		return jumpD;
 	}
 
-	public static Matrix computeJumpMatrixE(BipedState biped, BipedParameters params) {
+	public static Matrix computeJumpMatrixE(BipedState biped, Parameters params) {
 
 		// COMPUTEJUMPMATRIX Computes the expanded inertial matrix for jumps
 		double theta1 = biped.plantedLegAngle;
@@ -75,7 +75,7 @@ public class BipedComputer {
 		return jumpE;
 	}
 
-	public static Matrix computeFlowDMatrix(BipedState biped, BipedParameters params) {
+	public static Matrix computeFlowDMatrix(BipedState biped, Parameters params) {
 
 		double theta1 = biped.plantedLegAngle;
 		double theta2 = biped.swingLegAngle;
@@ -95,7 +95,7 @@ public class BipedComputer {
 		return flowD;
 	}
 
-	public static Matrix computeFlowCMatrix(BipedState biped, BipedParameters params) {
+	public static Matrix computeFlowCMatrix(BipedState biped, Parameters params) {
 
 		double theta1 = biped.plantedLegAngle;
 		double theta2 = biped.swingLegAngle;
@@ -116,7 +116,7 @@ public class BipedComputer {
 		return cFlow;
 	}
 
-	public static Matrix computeFlowGMatrix(BipedState biped, BipedParameters params) {
+	public static Matrix computeFlowGMatrix(BipedState biped, Parameters params) {
 
 		double theta1 = biped.plantedLegAngle;
 		double theta2 = biped.swingLegAngle;
@@ -148,8 +148,8 @@ public class BipedComputer {
 
 	public static MathShortcuts m = new MathShortcuts();
 
-	public static Double calculateCoeff(BipedParameters params, Double step_time, BipedState initial_state,
-			BipedState final_state, BipedLimb limb, Integer coef_num) {
+	public static Double calculateCoeff(Parameters params, Double step_time, BipedState initial_state, BipedState final_state,
+			BipedLimb limb, Integer coef_num) {
 
 		HashMap<BipedMotion, Double> info = initial_state.getLimbState(limb);
 		Double thetai = (Double) info.get(BipedMotion.ANGLE);
@@ -178,7 +178,7 @@ public class BipedComputer {
 		return b1;
 	}
 
-	public static HashMap<BipedLimb, Double> computeCoefficient(BipedParameters params, Double step_time,
+	public static HashMap<BipedLimb, Double> computeCoefficient(Parameters params, Double step_time,
 			BipedState initial_state, BipedState final_state, Integer coef_num) {
 
 		HashMap<BipedLimb, Double> coef = new HashMap<BipedLimb, Double>();
@@ -188,7 +188,7 @@ public class BipedComputer {
 		return coef;
 	}
 
-	public static void computeDiscreteChange(BipedState biped, BipedState biped_plus, BipedParameters params) {
+	public static void computeDiscreteChange(BipedState biped, BipedState biped_plus, Parameters params) {
 
 		double theta1 = biped.plantedLegAngle;
 		double theta2 = biped.swingLegAngle;
@@ -238,7 +238,7 @@ public class BipedComputer {
 
 	}
 
-	public Matrix computeControlInput(Matrix accelerations, BipedState biped, BipedParameters parameters) {
+	public Matrix computeControlInput(Matrix accelerations, BipedState biped, Parameters parameters) {
 
 		Matrix matD = BipedComputer.computeFlowDMatrix(biped, parameters);
 		Matrix matC = BipedComputer.computeFlowCMatrix(biped, parameters);
@@ -251,7 +251,14 @@ public class BipedComputer {
 		return controlUnbounded;
 	}
 
-	public static Double computeTimeToNextImpactStep(VirtualBipedState biped_state, BipedParameters params) {
+	public static double computeStepRemainder(biped.hybridsystem.BipedState state,
+			biped.hybridsystem.Parameters parameters) {
+
+		double hVal = parameters.stepAngle - state.plantedLegAngle;
+		return hVal;
+	}
+
+	public static Double computeTimeToNextImpactStep(biped.virtual.hybridsystem.State biped_state, Parameters params) {
 
 		Double stepTime = params.getStepTime();
 		Double timeToNext = stepTime - biped_state.trajTimer;
@@ -264,15 +271,14 @@ public class BipedComputer {
 		return timeToNext;
 	}
 
-	public static boolean isImpactOccurring(BipedState biped_state, BipedParameters params,
-			PerturbationState perturbation) {
+	public static boolean isImpactOccurring(BipedState biped_state, Parameters params, PerturbationState perturbation) {
 
 		boolean stepAngleReached = ((params.stepAngle + perturbation.perturbationAngle) <= biped_state.plantedLegAngle);//
 
 		return stepAngleReached;
 	}
 
-	public static boolean isImpactOccurring(BipedState biped_state, BipedParameters params) {
+	public static boolean isImpactOccurring(BipedState biped_state, Parameters params) {
 
 		// boolean stepAngleReached = (params.stepAngle <=
 		// biped_state.plantedLegAngle);//
@@ -281,13 +287,13 @@ public class BipedComputer {
 		return stepAngleReached;
 	}
 
-	public static BipedState computeChangeAtImpact(BipedState biped_state, BipedState biped_plus,
-			BipedParameters params, boolean return_copy) {
+	public static BipedState computeChangeAtImpact(BipedState biped_state, BipedState biped_plus, Parameters params,
+			boolean return_copy) {
 
 		return computeChangeAtImpact(biped_state, biped_plus, params);
 	}
 
-	public static BipedState computeChangeAtImpact(BipedState biped, BipedState biped_plus, BipedParameters params) {
+	public static BipedState computeChangeAtImpact(BipedState biped, BipedState biped_plus, Parameters params) {
 
 		double theta1 = biped.plantedLegAngle;
 		double theta2 = biped.swingLegAngle;
@@ -338,8 +344,8 @@ public class BipedComputer {
 		return biped;
 	}
 
-	public static void computeChangeBetweenImpact(BipedState biped_state, BipedState biped_dot, BipedParameters params,
-			Matrix control_input) {
+	public static void computeChangeBetweenImpact(BipedState biped_state, BipedState biped_dot, Parameters params,
+			Controller control_input) {
 
 		double omega1 = biped_state.plantedLegVelocity;
 		double omega2 = biped_state.swingLegVelocity;
@@ -350,7 +356,7 @@ public class BipedComputer {
 		Matrix matG = computeFlowGMatrix(biped_state, params);
 		Matrix vels = biped_state.getMotionMatrix(BipedMotion.ANGULAR_VELOCITY);
 
-		Matrix controlInput = control_input;
+		Matrix controlInput = control_input.getInputTorques();
 		Matrix accelerations = (matD.inverse().times((matC.times(vels)).minus(matG)))
 				.plus(params.getTorqueRelationship().times(controlInput));
 		double[][] accels = accelerations.getArray();
