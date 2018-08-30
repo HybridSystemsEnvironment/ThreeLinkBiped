@@ -1,8 +1,9 @@
 
-package biped;
+package bipedtasks;
 
 import org.jfree.chart.ChartPanel;
 
+import bouncingball.application.ConfigurationLoader;
 import edu.ucsc.cross.hse.core.chart.ChartUtils;
 import edu.ucsc.cross.hse.core.environment.EnvironmentSettings;
 import edu.ucsc.cross.hse.core.environment.HSEnvironment;
@@ -40,12 +41,29 @@ public class BipedApplication {
 		for (int i = 0; i < 1; i++) {
 			// Create set of connected agents
 			SystemSet systems = new SystemSet(ThreeLinkBipedTasks.getPerturbedClosedLoopSystemWithRandomizedIC(
-					BipedParameters.getTestParams(), 0.0, new ActuatorConstraint(100.0)));
+					BipedParameters.getTestParams(), 0.1, new ActuatorConstraint(100.0)));
 
 			// Create configured settings
 			EnvironmentSettings settings = getEnvironmentSettings();
 			// Create loaded environment
+			settings.maximumJumps = 200;
+			settings.maximumTime = 20;
+			settings.dataPointInterval = .05;
+			settings.eventHandlerMaximumCheckInterval = 1E-3;
+			settings.eventHandlerConvergenceThreshold = 1E-9;
+			settings.maxEventHandlerIterations = 100;
+			settings.domainPriority = DomainPriority.JUMP;
+			settings.storeNonPrimativeData = false;
+			// Specify integrator parameter values
+			double odeMaximumStepSize = 1e-1;
+			double odeMinimumStepSize = 1e-9;
+			double odeRelativeTolerance = 1.0e-6;
+			double odeSolverAbsoluteTolerance = 1.0e-6;
+			// Create and store integrator factory
+			settings.integrator = new DormandPrince853IntegratorFactory(odeMinimumStepSize, odeMaximumStepSize,
+					odeRelativeTolerance, odeSolverAbsoluteTolerance);
 			HSEnvironment environment = HSEnvironment.create(systems, settings);
+			ConfigurationLoader.loadEnvironmentSettings(environment);
 			// Run simulation and store result trajectories
 			TrajectorySet trajectories = environment.run();
 			// Generate figure and display in window
@@ -138,8 +156,8 @@ public class BipedApplication {
 		ChartUtils.configureLabels(yPos, "Time (sec)", "Y Position (m)", null, false);
 		ChartUtils.configureLabels(yVel, "Time (sec)", "Y Velocity (m/s)", null, false);
 		// Add charts to figure
-		figure.addComponent(0, 0, yPos);
-		figure.addComponent(0, 1, yVel);
+		figure.add(0, 0, yPos);
+		figure.add(0, 1, yVel);
 		// Return generated figure
 		return figure;
 	}

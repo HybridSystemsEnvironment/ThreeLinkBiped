@@ -1,8 +1,6 @@
-package edu.ucsc.hsl.hse.model.biped.threelink.systems;
+package edu.ucsc.hsl.hse.model.biped.threelink.states;
 
 import edu.ucsc.cross.hse.core.modeling.DataStructure;
-import edu.ucsc.hsl.hse.model.biped.threelink.states.BipedState;
-import edu.ucsc.hsl.hse.model.biped.threelink.states.VirtualBipedState;
 
 public class ClosedLoopBipedState extends DataStructure
 {

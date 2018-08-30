@@ -1,21 +1,15 @@
 
-package biped;
+package bipedtasks;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 
-import org.jfree.chart.ChartPanel;
-
 import com.be3short.obj.modification.XMLParser;
 
-import edu.ucsc.cross.hse.core.chart.ChartType;
-import edu.ucsc.cross.hse.core.chart.ChartUtils;
 import edu.ucsc.cross.hse.core.chart.RendererConfiguration;
 import edu.ucsc.cross.hse.core.environment.HSEnvironment;
-import edu.ucsc.cross.hse.core.figure.Figure;
 import edu.ucsc.cross.hse.core.logging.Console;
 import edu.ucsc.cross.hse.core.modeling.HybridSystem;
-import edu.ucsc.cross.hse.core.trajectory.HybridTime;
 import edu.ucsc.cross.hse.core.trajectory.TrajectorySet;
 import edu.ucsc.hsl.hse.model.biped.threelink.computors.ControllerConstraint;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedReferenceControl;
@@ -26,10 +20,10 @@ import edu.ucsc.hsl.hse.model.biped.threelink.parameters.ActuatorConstraint;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.PerturbationParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.BipedState;
+import edu.ucsc.hsl.hse.model.biped.threelink.states.ClosedLoopBipedState;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.PerturbationState;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.PerturbedClosedLoopBipedState;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.VirtualBipedState;
-import edu.ucsc.hsl.hse.model.biped.threelink.systems.ClosedLoopBipedState;
 import edu.ucsc.hsl.hse.model.biped.threelink.systems.ClosedLoopBipedSystem;
 import edu.ucsc.hsl.hse.model.biped.threelink.systems.PerturbedClosedLoopSystem;
 import edu.ucsc.hsl.hse.model.biped.threelink.systems.ReferenceSystem;
@@ -182,8 +176,9 @@ public class ThreeLinkBipedTasks {
 		TrajectorySet traj = env.run(18.0, 100);
 		// generateBipedLimbStateFigure2by3Figure(traj).exportToFile(FileBrowser.save(),
 		// GraphicFormat.EPS);
-		generateBipedLimbStateFigureVerticalPerturbed(traj).display();// .exportToFile(FileBrowser.save(),
-																		// GraphicFormat.EPS);
+		// generateBipedLimbStateFigureVerticalPerturbed(traj).display();//
+		// .exportToFile(FileBrowser.save(),
+		// GraphicFormat.EPS);
 	}
 
 	public static RendererConfiguration getDefaultBipedRenderer() {
@@ -202,112 +197,132 @@ public class ThreeLinkBipedTasks {
 		bipedRend.assignSeriesStroke("Reference", stroke3);
 		return bipedRend;
 	}
-
-	public static Figure generateBipedLimbStateFigure2by3Figure(TrajectorySet solution) {
-
-		Figure figure = new Figure(1000, 600);
-
-		ChartPanel pA = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel sA = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel tA = ChartUtils.createPanel(solution, HybridTime.TIME, "torsoAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel pV = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegVelocity", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel sV = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegVelocity", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel tV = ChartUtils.createPanel(solution, HybridTime.TIME, "torsoVelocity", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-
-		figure.addComponent(1, 0, pA);
-		figure.addComponent(2, 0, sA);
-		figure.addComponent(3, 0, tA);
-		figure.addComponent(1, 1, pV);
-		figure.addComponent(2, 1, sV);
-		figure.addComponent(3, 1, tV);
-
-		ChartUtils.configureLabels(pA, " ", " ", null, false);
-		ChartUtils.configureLabels(sA, " ", " ", null, false);
-		ChartUtils.configureLabels(tA, " ", " ", null, false);
-		ChartUtils.configureLabels(pV, " ", " ", null, false);
-		ChartUtils.configureLabels(sV, " ", " ", null, false);
-		ChartUtils.configureLabels(tV, " ", " ", null, false);
-		// ChartUtils.configureLabels(pA, null, " ", null, false);
-		// ChartUtils.configureLabels(sA, null, " ", null, false);
-		// ChartUtils.configureLabels(tA, null, " ", null, false);
-		// ChartUtils.configureLabels(pV, null, " ", null, false);
-		// ChartUtils.configureLabels(sV, null, " ", null, false);
-		// ChartUtils.configureLabels(tV, null, " ", null, false);
-		figure.getTitle().setText(null);
-		return figure;
-	}
-
-	public static Figure generateBipedLegAngleFigPerturbed(TrajectorySet solution) {
-
-		Figure figure = new Figure(1000, 600);
-
-		ChartPanel pA = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel sA = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-
-		ChartPanel pert = ChartUtils.createPanel(solution, HybridTime.TIME, "perturbationAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		figure.addComponent(0, 0, pA);
-		figure.addComponent(0, 1, sA);
-
-		figure.addComponent(0, 2, pert);
-
-		ChartUtils.configureLabels(pA, null, "Planted Leg Angle (rad)", null, false);
-		ChartUtils.configureLabels(sA, null, "Swing Leg Angle (rad)", null, true);
-		ChartUtils.configureLabels(pert, "Time (sec)", "Perturbed Angle(rad)", null, false);
-		figure.getTitle().setText(null);
-		return figure;
-	}
-
-	public static Figure generateBipedLimbStateFigureVerticalPerturbed(TrajectorySet solution) {
-
-		Figure figure = new Figure(1000, 1400);
-
-		ChartPanel pA = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel sA = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel tA = ChartUtils.createPanel(solution, HybridTime.TIME, "torsoAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel pV = ChartUtils.createPanel(solution, HybridTime.TIME, "plantedLegVelocity", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel sV = ChartUtils.createPanel(solution, HybridTime.TIME, "swingLegVelocity", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel tV = ChartUtils.createPanel(solution, HybridTime.TIME, "torsoVelocity", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		ChartPanel pert = ChartUtils.createPanel(solution, HybridTime.TIME, "perturbationAngle", ChartType.LINE,
-				getDefaultBipedRenderer(), null);
-		figure.addComponent(0, 1, pA);
-		figure.addComponent(0, 2, sA);
-		figure.addComponent(0, 3, tA);
-		figure.addComponent(0, 4, pV);
-		figure.addComponent(0, 5, sV);
-		figure.addComponent(0, 6, tV);
-		figure.addComponent(0, 7, pert);
-
-		// ChartUtils.configureLabels(pA, " ", " ", null, false);
-		// ChartUtils.configureLabels(sA, " ", " ", null, false);
-		// ChartUtils.configureLabels(tA, " ", " ", null, false);
-		// ChartUtils.configureLabels(pV, " ", " ", null, false);
-		// ChartUtils.configureLabels(sV, " ", " ", null, false);
-		// ChartUtils.configureLabels(tV, " ", " ", null, false);
-		// ChartUtils.configureLabels(pert, " ", " ", null, false);
-
-		ChartUtils.configureLabels(pA, null, " ", null, false);
-		ChartUtils.configureLabels(sA, null, " ", null, false);
-		ChartUtils.configureLabels(tA, null, " ", null, false);
-		ChartUtils.configureLabels(pV, null, " ", null, false);
-		ChartUtils.configureLabels(sV, null, " ", null, false);
-		ChartUtils.configureLabels(tV, null, " ", null, false);
-		ChartUtils.configureLabels(pert, " ", " ", null, false);
-		figure.getTitle().setText(null);
-		return figure;
-	}
+	//
+	// public static Figure generateBipedLimbStateFigure2by3Figure(TrajectorySet
+	// solution) {
+	//
+	// Figure figure = new Figure(1000, 600);
+	//
+	// ChartPanel pA = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "plantedLegAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel sA = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "swingLegAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel tA = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "torsoAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel pV = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "plantedLegVelocity", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel sV = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "swingLegVelocity", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel tV = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "torsoVelocity", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	//
+	// figure.addComponent(1, 0, pA);
+	// figure.addComponent(2, 0, sA);
+	// figure.addComponent(3, 0, tA);
+	// figure.addComponent(1, 1, pV);
+	// figure.addComponent(2, 1, sV);
+	// figure.addComponent(3, 1, tV);
+	//
+	// ChartUtils.configureLabels(pA, " ", " ", null, false);
+	// ChartUtils.configureLabels(sA, " ", " ", null, false);
+	// ChartUtils.configureLabels(tA, " ", " ", null, false);
+	// ChartUtils.configureLabels(pV, " ", " ", null, false);
+	// ChartUtils.configureLabels(sV, " ", " ", null, false);
+	// ChartUtils.configureLabels(tV, " ", " ", null, false);
+	// // ChartUtils.configureLabels(pA, null, " ", null, false);
+	// // ChartUtils.configureLabels(sA, null, " ", null, false);
+	// // ChartUtils.configureLabels(tA, null, " ", null, false);
+	// // ChartUtils.configureLabels(pV, null, " ", null, false);
+	// // ChartUtils.configureLabels(sV, null, " ", null, false);
+	// // ChartUtils.configureLabels(tV, null, " ", null, false);
+	// figure.getTitle().setText(null);
+	// return figure;
+	// }
+	//
+	// public static Figure generateBipedLegAngleFigPerturbed(TrajectorySet
+	// solution) {
+	//
+	// Figure figure = new Figure(1000, 600);
+	//
+	// ChartPanel pA = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "plantedLegAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel sA = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "swingLegAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	//
+	// ChartPanel pert = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "perturbationAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// figure.addComponent(0, 0, pA);
+	// figure.addComponent(0, 1, sA);
+	//
+	// figure.addComponent(0, 2, pert);
+	//
+	// ChartUtils.configureLabels(pA, null, "Planted Leg Angle (rad)", null, false);
+	// ChartUtils.configureLabels(sA, null, "Swing Leg Angle (rad)", null, true);
+	// ChartUtils.configureLabels(pert, "Time (sec)", "Perturbed Angle(rad)", null,
+	// false);
+	// figure.getTitle().setText(null);
+	// return figure;
+	// }
+	//
+	// public static Figure
+	// generateBipedLimbStateFigureVerticalPerturbed(TrajectorySet solution) {
+	//
+	// Figure figure = new Figure(1000, 1400);
+	//
+	// ChartPanel pA = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "plantedLegAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel sA = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "swingLegAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel tA = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "torsoAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel pV = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "plantedLegVelocity", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel sV = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "swingLegVelocity", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel tV = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "torsoVelocity", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// ChartPanel pert = ChartUtils.createPanel(solution, HybridTime.TIME,
+	// "perturbationAngle", ChartType.LINE,
+	// getDefaultBipedRenderer(), null);
+	// figure.addComponent(0, 1, pA);
+	// figure.addComponent(0, 2, sA);
+	// figure.addComponent(0, 3, tA);
+	// figure.addComponent(0, 4, pV);
+	// figure.addComponent(0, 5, sV);
+	// figure.addComponent(0, 6, tV);
+	// figure.addComponent(0, 7, pert);
+	//
+	// // ChartUtils.configureLabels(pA, " ", " ", null, false);
+	// // ChartUtils.configureLabels(sA, " ", " ", null, false);
+	// // ChartUtils.configureLabels(tA, " ", " ", null, false);
+	// // ChartUtils.configureLabels(pV, " ", " ", null, false);
+	// // ChartUtils.configureLabels(sV, " ", " ", null, false);
+	// // ChartUtils.configureLabels(tV, " ", " ", null, false);
+	// // ChartUtils.configureLabels(pert, " ", " ", null, false);
+	//
+	// ChartUtils.configureLabels(pA, null, " ", null, false);
+	// ChartUtils.configureLabels(sA, null, " ", null, false);
+	// ChartUtils.configureLabels(tA, null, " ", null, false);
+	// ChartUtils.configureLabels(pV, null, " ", null, false);
+	// ChartUtils.configureLabels(sV, null, " ", null, false);
+	// ChartUtils.configureLabels(tV, null, " ", null, false);
+	// ChartUtils.configureLabels(pert, " ", " ", null, false);
+	// figure.getTitle().setText(null);
+	// return figure;
+	// }
 }
