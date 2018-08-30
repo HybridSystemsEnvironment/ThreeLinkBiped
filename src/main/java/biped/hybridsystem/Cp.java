@@ -7,7 +7,7 @@ import edu.ucsc.cross.hse.core.modeling.FlowSet;
 /**
  * A flow set
  */
-public class Cp implements FlowSet<BipedState> {
+public class Cp implements FlowSet<State> {
 
 	/**
 	 * Parameters
@@ -29,7 +29,7 @@ public class Cp implements FlowSet<BipedState> {
 	 *            current state
 	 */
 	@Override
-	public boolean C(BipedState x) {
+	public boolean C(State x) {
 
 		boolean inC = true;
 		double hVal = BipedComputer.computeStepRemainder(x, parameters);

@@ -7,7 +7,7 @@ import edu.ucsc.cross.hse.core.modeling.JumpMap;
 /**
  * A jump map
  */
-public class Gp implements JumpMap<BipedState> {
+public class Gp implements JumpMap<State> {
 
 	/**
 	 * Parameters
@@ -31,7 +31,7 @@ public class Gp implements JumpMap<BipedState> {
 	 *            state update values
 	 */
 	@Override
-	public void G(BipedState x, BipedState x_plus) {
+	public void G(State x, State x_plus) {
 
 		BipedComputer.computeChangeAtImpact(x, x_plus, parameters);
 	}

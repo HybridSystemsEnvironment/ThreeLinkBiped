@@ -11,7 +11,7 @@ import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedMotion;
 /**
  * A state
  */
-public class BipedState extends DataStructure {
+public class State extends DataStructure {
 
 	public double plantedLegAngle;
 
@@ -28,21 +28,22 @@ public class BipedState extends DataStructure {
 	/*
 	 * Constructs the default biped state with all values set to zero
 	 */
-	public BipedState() {
+	public State() {
 
-		plantedLegAngle = 0.0;
-		swingLegAngle = 0.0;
-		torsoAngle = 0.0;
-		plantedLegVelocity = 0.0;
-		swingLegVelocity = 0.0;
-		torsoVelocity = 0.0;
+		this(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
+	}
+
+	public static State getState(State state) {
+
+		return new State(state.plantedLegAngle, state.swingLegAngle, state.torsoAngle, state.plantedLegVelocity,
+				state.swingLegVelocity, state.torsoVelocity);
 	}
 
 	/*
 	 * Constructs a biped state with defined values
 	 */
-	public BipedState(Double planted_angle, Double swing_angle, Double torso_angle, Double planted_velocity,
+	public State(Double planted_angle, Double swing_angle, Double torso_angle, Double planted_velocity,
 			Double swing_velocity, Double torso_velocity) {
 
 		plantedLegAngle = planted_angle;
@@ -51,6 +52,8 @@ public class BipedState extends DataStructure {
 		plantedLegVelocity = planted_velocity;
 		swingLegVelocity = swing_velocity;
 		torsoVelocity = torso_velocity;
+		this.getProperties().setStoreTrajectory(true);
+		this.getProperties().setName("Biped State");
 	}
 
 	public HashMap<BipedMotion, Double> getLimbState(BipedLimb limb) {
@@ -93,14 +96,14 @@ public class BipedState extends DataStructure {
 		return new Matrix(mat);
 	}
 
-	public static BipedState getRandomizedState(Parameters params) {
+	public static State getRandomizedState(Parameters params) {
 
-		BipedState state = new BipedState();
+		State state = new State();
 		randomizeState(state, params);
 		return state;
 	}
 
-	public static void randomizeState(BipedState state, Parameters params) {
+	public static void randomizeState(State state, Parameters params) {
 
 		Double angleMax = params.stepAngle - .05;
 		Double velMax = params.walkSpeed;

@@ -1,27 +1,22 @@
 
 package biped.virtual.hybridsystem;
 
-import edu.ucsc.cross.hse.core.figure2.TimerState;
+import edu.ucsc.cross.hse.core.modeling.DataStructure;
 
-public class State extends biped.hybridsystem.BipedState {
+public class State extends DataStructure {
 
 	public double trajTimer;
 
-	public TrajectoryParameters trajParams;
+	public TrajectoryParameters trajectoryParameters;
 
-	public TimerState bip;
+	public biped.hybridsystem.State bipedState;
 
-	public State(biped.hybridsystem.BipedState biped, Parameters parameters) {
+	public State(biped.hybridsystem.State biped, Parameters parameters) {
 
 		trajTimer = 0.0;
-		bip = new TimerState(1.0);
-		bip.getProperties().setStoreTrajectory(true);
-		plantedLegAngle = biped.plantedLegAngle;
-		plantedLegVelocity = biped.plantedLegVelocity;
-		swingLegAngle = biped.swingLegAngle;
-		swingLegVelocity = biped.swingLegVelocity;
-		torsoAngle = biped.torsoAngle;
-		torsoVelocity = biped.torsoVelocity;
-		trajParams = new TrajectoryParameters(biped, parameters.equilibParams.getFinalState(), parameters.bipedParams);
+		this.bipedState = biped;
+		trajectoryParameters = new TrajectoryParameters(biped, parameters.equilibParams.getFinalState(),
+				parameters.bipedParams);
+		super.getProperties().setStoreTrajectory(true);
 	}
 }

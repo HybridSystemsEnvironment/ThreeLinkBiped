@@ -8,7 +8,7 @@ import edu.ucsc.hsl.hse.model.biped.threelink.factories.Zero;
 /**
  * A jump set
  */
-public class Dp implements JumpSet<BipedState> {
+public class Dp implements JumpSet<State> {
 
 	/**
 	 * Parameters
@@ -30,7 +30,7 @@ public class Dp implements JumpSet<BipedState> {
 	 *            current state
 	 */
 	@Override
-	public boolean D(BipedState x) {
+	public boolean D(State x) {
 
 		boolean inD = false; // add logic to determine if x in jump set
 		double hVal = BipedComputer.computeStepRemainder(x, parameters);

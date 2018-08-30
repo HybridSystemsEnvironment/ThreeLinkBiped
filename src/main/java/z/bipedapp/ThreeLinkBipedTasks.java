@@ -8,7 +8,7 @@ import org.jfree.chart.ChartPanel;
 
 import com.be3short.obj.modification.XMLParser;
 
-import biped.virtual.hybridsystem.BipedReferenceControl;
+import biped.reference.control.BipedReferenceControl;
 import edu.ucsc.cross.hse.core.chart.ChartType;
 import edu.ucsc.cross.hse.core.chart.ChartUtils;
 import edu.ucsc.cross.hse.core.chart.RendererConfiguration;

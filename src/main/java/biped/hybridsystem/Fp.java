@@ -1,25 +1,27 @@
 
 package biped.hybridsystem;
 
+import Jama.Matrix;
+import biped.application.Controller;
 import biped.computations.BipedComputer;
 import edu.ucsc.cross.hse.core.modeling.FlowMap;
 
 /**
  * A flow map
  */
-public class Fp implements FlowMap<BipedState> {
+public class Fp implements FlowMap<State> {
 
 	/**
 	 * Parameters
 	 */
 	public Parameters parameters;
 
-	public Controller controller;
+	public Controller<State, Matrix> controller;
 
 	/**
 	 * Constructor for flow map
 	 */
-	public Fp(Parameters parameters, Controller controller) {
+	public Fp(Parameters parameters, Controller<State, Matrix> controller) {
 
 		this.parameters = parameters;
 		this.controller = controller;
@@ -34,9 +36,9 @@ public class Fp implements FlowMap<BipedState> {
 	 *            state derivative values
 	 */
 	@Override
-	public void F(BipedState x, BipedState x_dot) {
+	public void F(State x, State x_dot) {
 
-		BipedComputer.computeChangeBetweenImpact(x, x_dot, parameters, controller);
+		BipedComputer.computeChangeBetweenImpact(x, x_dot, parameters, controller.k(x));
 	}
 
 }

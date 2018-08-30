@@ -2,7 +2,7 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.computors;
 
 import biped.hybridsystem.Parameters;
-import biped.hybridsystem.BipedState;
+import biped.hybridsystem.State;
 import biped.virtual.hybridsystem.TrajectoryParameters;
 
 public class EquilibriumComputer {
@@ -41,9 +41,9 @@ public class EquilibriumComputer {
 	public TrajectoryParameters getEquilibriumParameters() {
 
 		TrajectoryParameters trajParams = null;
-		BipedState in = getInitialEquilibState();
-		BipedState fin = getFinalEquilibState();
-		trajParams = new TrajectoryParameters(in, fin, params, true);
+		State in = getInitialEquilibState();
+		State fin = getFinalEquilibState();
+		trajParams = new TrajectoryParameters(in, fin, params);
 		return trajParams;
 	}
 
@@ -51,15 +51,15 @@ public class EquilibriumComputer {
 
 		TrajectoryParameters trajParams = null;
 		EquilibriumComputer comp = new EquilibriumComputer(params);
-		BipedState in = comp.getInitialEquilibState();
-		BipedState fin = comp.getFinalEquilibState();
-		trajParams = new TrajectoryParameters(in, fin, params, true);
+		State in = comp.getInitialEquilibState();
+		State fin = comp.getFinalEquilibState();
+		trajParams = new TrajectoryParameters(in, fin, params);
 		return trajParams;
 	}
 
-	public BipedState getInitialEquilibState() {
+	public State getInitialEquilibState() {
 
-		BipedState initial = new BipedState();
+		State initial = new State();
 		initial.plantedLegAngle = (-params.stepAngle);
 		initial.swingLegAngle = (params.stepAngle);
 		initial.torsoAngle = (params.torsoAngle);
@@ -70,9 +70,9 @@ public class EquilibriumComputer {
 
 	}
 
-	public BipedState getFinalEquilibState() {
+	public State getFinalEquilibState() {
 
-		BipedState finalState = new BipedState();// .component().copy(false, true);
+		State finalState = new State();// .component().copy(false, true);
 		finalState.plantedLegAngle = (params.stepAngle);
 		finalState.swingLegAngle = (-params.stepAngle);
 		finalState.torsoAngle = (params.torsoAngle);

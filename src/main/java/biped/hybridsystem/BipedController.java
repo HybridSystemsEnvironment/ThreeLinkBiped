@@ -2,7 +2,7 @@ package biped.hybridsystem;
 
 import Jama.Matrix;
 
-public interface Controller
+public interface BipedController
 {
 
 	public Matrix getInputTorques();

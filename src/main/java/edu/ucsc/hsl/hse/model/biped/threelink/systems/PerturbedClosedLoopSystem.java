@@ -2,7 +2,7 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.systems;
 
 import biped.computations.BipedComputer;
-import biped.hybridsystem.Controller;
+import biped.hybridsystem.BipedController;
 import edu.ucsc.cross.hse.core.modeling.HybridSystem;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedVirtualControl;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
@@ -20,10 +20,10 @@ public class PerturbedClosedLoopSystem extends HybridSystem<PerturbedClosedLoopB
 
 	public BipedVirtualControl controller;
 
-	public Controller realControl;
+	public BipedController realControl;
 
 	public PerturbedClosedLoopSystem(PerturbedClosedLoopBipedState state, VirtualBipedState reference,
-			BipedParameters params, BipedVirtualControl virtual_control, Controller real_control,
+			BipedParameters params, BipedVirtualControl virtual_control, BipedController real_control,
 			PerturbationParameters p_params) {
 
 		super(state);

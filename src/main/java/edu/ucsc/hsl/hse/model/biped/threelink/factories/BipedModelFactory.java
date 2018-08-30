@@ -1,7 +1,7 @@
 
 package edu.ucsc.hsl.hse.model.biped.threelink.factories;
 
-import biped.virtual.hybridsystem.BipedReferenceControl;
+import biped.reference.control.BipedReferenceControl;
 import edu.ucsc.cross.hse.core.variable.RandomVariable;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedTrackingController;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedVirtualControl;

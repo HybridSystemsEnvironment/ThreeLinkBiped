@@ -1,7 +1,7 @@
 
 package biped.virtual.hybridsystem;
 
-import biped.hybridsystem.BipedState;
+import biped.hybridsystem.State;
 import edu.ucsc.cross.hse.core.modeling.DataStructure;
 import edu.ucsc.hsl.hse.model.biped.threelink.computors.EquilibriumComputer;
 
@@ -14,9 +14,9 @@ public class Parameters extends DataStructure {
 
 	public TrajectoryParameters equilibParams;
 
-	public static BipedState getBipedState(BipedState state) {
+	public static State getBipedState(State state) {
 
-		return new BipedState(state.plantedLegAngle, state.swingLegAngle, state.torsoAngle, state.plantedLegVelocity,
+		return new State(state.plantedLegAngle, state.swingLegAngle, state.torsoAngle, state.plantedLegVelocity,
 				state.swingLegVelocity, state.torsoVelocity);
 	}
 

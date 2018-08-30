@@ -1,7 +1,8 @@
 
 package biped.virtual.hybridsystem;
 
-import biped.hybridsystem.BipedState;
+import biped.application.Controller;
+import biped.computations.BipedComputer;
 import edu.ucsc.cross.hse.core.modeling.JumpMap;
 
 /**
@@ -15,10 +16,16 @@ public class Gp implements JumpMap<State> {
 	public Parameters parameters;
 
 	/**
+	 * Controller
+	 */
+	Controller<State, TrajectoryParameters> controller;
+
+	/**
 	 * Constructor for jump map
 	 */
-	public Gp(Parameters parameters) {
+	public Gp(Controller<State, TrajectoryParameters> controller, Parameters parameters) {
 
+		this.controller = controller;
 		this.parameters = parameters;
 	}
 
@@ -33,20 +40,14 @@ public class Gp implements JumpMap<State> {
 	@Override
 	public void G(State x, State x_plus) {
 
-		// Get equilibrium (limit cycle) initial state
-		BipedState equilibState = parameters.equilibParams.getInitialState();
-
-		// Reset reference state vlues to initial equilibrium (limit cycle) state values
-		x_plus.plantedLegAngle = equilibState.plantedLegAngle;
-		x_plus.plantedLegVelocity = equilibState.plantedLegVelocity;
-		x_plus.swingLegAngle = equilibState.swingLegAngle;
-		x_plus.swingLegVelocity = equilibState.swingLegVelocity;
-		x_plus.torsoAngle = equilibState.torsoAngle;
-		x_plus.torsoVelocity = equilibState.torsoVelocity;
-		x_plus.bip.value = 0.0;
+		TrajectoryParameters newTrajParams = controller.k(x);
+		BipedComputer.computeChangeAtImpact(x.bipedState, x_plus.bipedState, parameters.bipedParams);
+		x_plus.trajectoryParameters.B0 = newTrajParams.B0;
+		x_plus.trajectoryParameters.B1 = newTrajParams.B1;
+		x_plus.trajectoryParameters.finalState = newTrajParams.getFinalState();
+		x_plus.trajectoryParameters.initialState = newTrajParams.getInitialState();
 		x_plus.trajTimer = 0.0;
 
-		// Keep same equilibrium parameters
 	}
 
 }

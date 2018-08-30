@@ -64,7 +64,7 @@ public class PostProcessor {
 		// Create figure (width, height, title)
 		Figure figure = new Figure(600, 600, "Template Simulation");
 		// Add charts to figure (
-		figure.add(0, 0, solution, HybridTime.TIME, "value", "Time (sec)", "State Value", null, true);
+		figure.add(0, 0, solution, HybridTime.TIME, "trajTimer", "Time (sec)", "State Value", null, true);
 		// Return generated figure
 		return figure;
 	}

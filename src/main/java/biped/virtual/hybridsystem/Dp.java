@@ -2,7 +2,10 @@
 package biped.virtual.hybridsystem;
 
 import biped.computations.BipedComputer;
+import biped.hybridsystem.Link;
 import edu.ucsc.cross.hse.core.modeling.JumpSet;
+import edu.ucsc.cross.hse.core.network.Network;
+import edu.ucsc.cross.hse.core.network.SubNode;
 import edu.ucsc.hsl.hse.model.biped.threelink.factories.Zero;
 
 /**
@@ -33,8 +36,13 @@ public class Dp implements JumpSet<State> {
 	public boolean D(State x) {
 
 		boolean inD = false; // add logic to determine if x in jump set
-		double hVal = BipedComputer.computeStepRemainder(x, parameters.bipedParams);
-		inD = Zero.equal(hVal) && x.plantedLegVelocity >= 0.0;
+
+		SubNode<State, biped.hybridsystem.State> node = Network.getGlobal().getSubNode(x,
+				biped.hybridsystem.State.class, Link.PLANT_TO_VIRTUAL.toString());
+		// System.out.println(XMLParser.serializeObject(node));
+		biped.hybridsystem.State trigger = node.getOutgoing().get(0).getSource().bipedState;
+		double hVal = BipedComputer.computeStepRemainder(trigger, parameters.bipedParams);
+		inD = Zero.equal(hVal) && trigger.plantedLegVelocity >= 0.0;
 		return inD;
 	}
 
