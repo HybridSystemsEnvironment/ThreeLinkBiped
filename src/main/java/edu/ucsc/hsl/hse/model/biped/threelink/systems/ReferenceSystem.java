@@ -1,7 +1,7 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.systems;
 
 import biped.computations.BipedComputer;
-import biped.reference.control.BipedReferenceControl;
+import biped.reference.control.VirtualFlowController;
 import edu.ucsc.cross.hse.core.modeling.HybridSystem;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.states.BipedState;
@@ -11,9 +11,9 @@ public class ReferenceSystem extends HybridSystem<VirtualBipedState>
 {
 
 	public BipedParameters params;
-	public BipedReferenceControl controller;
+	public VirtualFlowController controller;
 
-	public ReferenceSystem(VirtualBipedState state, BipedParameters params, BipedReferenceControl controller)
+	public ReferenceSystem(VirtualBipedState state, BipedParameters params, VirtualFlowController controller)
 	{
 		super(state);
 		state.getProperties().setName("Reference Biped");

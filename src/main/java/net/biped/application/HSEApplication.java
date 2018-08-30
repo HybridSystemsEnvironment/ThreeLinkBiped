@@ -1,5 +1,5 @@
 
-package biped.application;
+package net.biped.application;
 
 import edu.ucsc.cross.hse.core.environment.HSEnvironment;
 
@@ -22,7 +22,6 @@ public class HSEApplication {
 		ConfigurationLoader.loadEnvironmentSettings(environment);
 		// load environment content
 		ContentLoader.loadEnvironmentContent(environment);
-		environment.saveToFile(false);
 		// run environment
 		environment.run();
 		// process results

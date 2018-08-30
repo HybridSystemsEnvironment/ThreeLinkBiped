@@ -1,5 +1,5 @@
 
-package biped.virtual.hybridsystem;
+package net.biped.virtual.hybridsystem;
 
 import edu.ucsc.cross.hse.core.modeling.DataStructure;
 
@@ -18,10 +18,5 @@ public class State extends DataStructure {
 		trajectoryParameters = new TrajectoryParameters(biped, parameters.equilibParams.getFinalState(),
 				parameters.bipedParams);
 		super.getProperties().setStoreTrajectory(true);
-	}
-
-	public State(Parameters parameters) {
-
-		this(new biped.hybridsystem.State(), parameters);
 	}
 }

@@ -8,8 +8,8 @@ import org.jfree.chart.ChartPanel;
 
 import com.be3short.obj.modification.XMLParser;
 
-import biped.reference.control.BipedReferenceControl;
-import biped.reference.control.BipedTrackingController;
+import biped.reference.control.VirtualFlowController;
+import biped.reference.control.PlantFlowController;
 import edu.ucsc.cross.hse.core.chart.ChartType;
 import edu.ucsc.cross.hse.core.chart.ChartUtils;
 import edu.ucsc.cross.hse.core.chart.RendererConfiguration;
@@ -66,7 +66,7 @@ public class ThreeLinkBipedTasks {
 
 		VirtualBipedState state = VirtualBipedState.getTestState();
 		BipedParameters params = BipedParameters.getTestParams();
-		BipedReferenceControl controller = new BipedReferenceControl(state, params);
+		VirtualFlowController controller = new VirtualFlowController(state, params);
 		ReferenceSystem reference = new ReferenceSystem(state, params, controller);
 
 		reference.initialize();
@@ -83,7 +83,7 @@ public class ThreeLinkBipedTasks {
 
 		vbip.trajTimer = params.getStepTime() * ((Math.random() * .8) + .2);
 		BipedVirtualControl vc = new BipedVirtualControl(bip, vbip, ref.getComponents().getState(), params);
-		BipedTrackingController tc = new BipedTrackingController(bip, vbip, vc, params);
+		PlantFlowController tc = new PlantFlowController(bip, vbip, vc, params);
 
 		bip.getProperties().setName("Plant");
 		vbip.getProperties().setName("Virtual System");
@@ -100,7 +100,7 @@ public class ThreeLinkBipedTasks {
 			Double maximum_perturbation_percentage) {
 
 		BipedVirtualControl vc = new BipedVirtualControl(plant, virtual, reference, params);
-		BipedTrackingController tc = new BipedTrackingController(plant, virtual, vc, params);
+		PlantFlowController tc = new PlantFlowController(plant, virtual, vc, params);
 		PerturbationParameters pParams = new PerturbationParameters(maximum_perturbation_percentage);
 		PerturbationState ps = new PerturbationState(
 				(Math.random() * pParams.perturbationPercentage) * params.stepAngle);
@@ -116,7 +116,7 @@ public class ThreeLinkBipedTasks {
 			Double maximum_perturbation_percentage, ActuatorConstraint constraint) {
 
 		BipedVirtualControl vc = new BipedVirtualControl(plant, virtual, reference, params);
-		BipedTrackingController tc = new BipedTrackingController(plant, virtual, vc, params);
+		PlantFlowController tc = new PlantFlowController(plant, virtual, vc, params);
 		ControllerConstraint controlConst = new ControllerConstraint(tc, constraint);
 		PerturbationParameters pParams = new PerturbationParameters(maximum_perturbation_percentage);
 		PerturbationState ps = new PerturbationState(
@@ -135,7 +135,7 @@ public class ThreeLinkBipedTasks {
 		VirtualBipedState virtual = VirtualBipedState.getRandomizedState(params);
 		VirtualBipedState reference = VirtualBipedState.getRandomizedState(params);
 		virtual.trajTimer = params.getStepTime() * ((Math.random() * .8) + .2);
-		BipedReferenceControl controller = new BipedReferenceControl(reference, params);
+		VirtualFlowController controller = new VirtualFlowController(reference, params);
 		ReferenceSystem referenceSys = new ReferenceSystem(reference, params, controller);
 
 		PerturbedClosedLoopSystem perturbationSystem = getClosedLoopSystemWithPerturbations(plant, virtual, reference,
@@ -156,7 +156,7 @@ public class ThreeLinkBipedTasks {
 		VirtualBipedState virtual = VirtualBipedState.getRandomizedState(params);
 		VirtualBipedState reference = VirtualBipedState.getRandomizedState(params);
 		virtual.trajTimer = params.getStepTime() * ((Math.random() * .8) + .2);
-		BipedReferenceControl controller = new BipedReferenceControl(reference, params);
+		VirtualFlowController controller = new VirtualFlowController(reference, params);
 		ReferenceSystem referenceSys = new ReferenceSystem(reference, params, controller);
 
 		PerturbedClosedLoopSystem perturbationSystem = getClosedLoopSystemWithPerturbations(plant, virtual, reference,

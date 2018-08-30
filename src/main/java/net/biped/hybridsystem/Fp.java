@@ -1,9 +1,9 @@
 
-package biped.virtual.hybridsystem;
+package net.biped.hybridsystem;
 
 import Jama.Matrix;
+import biped.application.Controller;
 import biped.computations.BipedComputer;
-import edu.ucsc.cross.hse.core.modeling.Controller;
 import edu.ucsc.cross.hse.core.modeling.FlowMap;
 
 /**
@@ -38,9 +38,7 @@ public class Fp implements FlowMap<State> {
 	@Override
 	public void F(State x, State x_dot) {
 
-		x_dot.trajTimer = 1.0;
-		Matrix control = controller.k(x);
-		BipedComputer.computeChangeBetweenImpact(x.bipedState, x_dot.bipedState, parameters.bipedParams, control);
+		BipedComputer.computeChangeBetweenImpact(x, x_dot, parameters, controller.k(x));
 	}
 
 }

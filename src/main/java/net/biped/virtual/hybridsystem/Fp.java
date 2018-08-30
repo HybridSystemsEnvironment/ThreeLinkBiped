@@ -1,9 +1,9 @@
 
-package biped.virtual.hybridsystem;
+package net.biped.virtual.hybridsystem;
 
 import Jama.Matrix;
+import biped.application.Controller;
 import biped.computations.BipedComputer;
-import edu.ucsc.cross.hse.core.modeling.Controller;
 import edu.ucsc.cross.hse.core.modeling.FlowMap;
 
 /**

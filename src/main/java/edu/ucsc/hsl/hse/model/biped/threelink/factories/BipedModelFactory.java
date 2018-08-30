@@ -1,8 +1,8 @@
 
 package edu.ucsc.hsl.hse.model.biped.threelink.factories;
 
-import biped.reference.control.BipedReferenceControl;
-import biped.reference.control.BipedTrackingController;
+import biped.reference.control.VirtualFlowController;
+import biped.reference.control.PlantFlowController;
 import edu.ucsc.cross.hse.core.variable.RandomVariable;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedVirtualControl;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
@@ -27,7 +27,7 @@ public class BipedModelFactory {
 				(Math.random() * pParams.perturbationPercentage) * parameters.stepAngle);
 		BipedVirtualControl vc = new BipedVirtualControl(plant_state, virtual_state,
 				reference.getComponents().getState(), parameters);
-		BipedTrackingController tc = new BipedTrackingController(plant_state, virtual_state, vc, parameters);
+		PlantFlowController tc = new PlantFlowController(plant_state, virtual_state, vc, parameters);
 		PerturbedClosedLoopBipedState perturbedState = new PerturbedClosedLoopBipedState(plant_state, virtual_state,
 				ps);
 		PerturbedClosedLoopSystem sys = new PerturbedClosedLoopSystem(perturbedState,
@@ -40,7 +40,7 @@ public class BipedModelFactory {
 
 		BipedVirtualControl vc = new BipedVirtualControl(plant_state, virtual_state,
 				reference.getComponents().getState(), parameters);
-		BipedTrackingController tc = new BipedTrackingController(plant_state, virtual_state, vc, parameters);
+		PlantFlowController tc = new PlantFlowController(plant_state, virtual_state, vc, parameters);
 		ClosedLoopBipedSystem sys = new ClosedLoopBipedSystem(
 				new ClosedLoopBipedState(plant_state, virtual_state, new PerturbationState(0.0)),
 				reference.getComponents().getState(), parameters, vc, tc);
@@ -49,7 +49,7 @@ public class BipedModelFactory {
 
 	public static ReferenceSystem getReferenceSystem(VirtualBipedState reference_state, BipedParameters parameters) {
 
-		BipedReferenceControl controller = new BipedReferenceControl(reference_state, parameters);
+		VirtualFlowController controller = new VirtualFlowController(reference_state, parameters);
 		ReferenceSystem reference = new ReferenceSystem(reference_state, parameters, controller);
 		reference.initialize();
 		return reference;

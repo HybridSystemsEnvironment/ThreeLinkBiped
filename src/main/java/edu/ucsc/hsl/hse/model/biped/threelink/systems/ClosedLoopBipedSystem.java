@@ -2,7 +2,7 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.systems;
 
 import biped.computations.BipedComputer;
-import biped.reference.control.BipedTrackingController;
+import biped.reference.control.PlantFlowController;
 import edu.ucsc.cross.hse.core.modeling.HybridSystem;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedVirtualControl;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
@@ -17,10 +17,10 @@ public class ClosedLoopBipedSystem extends HybridSystem<ClosedLoopBipedState> {
 
 	public BipedVirtualControl controller;
 
-	public BipedTrackingController realControl;
+	public PlantFlowController realControl;
 
 	public ClosedLoopBipedSystem(ClosedLoopBipedState state, VirtualBipedState reference, BipedParameters params,
-			BipedVirtualControl virtual_control, BipedTrackingController real_control) {
+			BipedVirtualControl virtual_control, PlantFlowController real_control) {
 
 		super(state);
 		this.referenceState = reference;

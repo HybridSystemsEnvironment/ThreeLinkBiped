@@ -2,11 +2,10 @@
 package biped.application;
 
 import Jama.Matrix;
-import biped.hybridsystem.Link;
-import biped.reference.control.BipedReferenceControl;
-import biped.reference.control.BipedTrackingController;
-import biped.reference.control.DiscreteController;
-import biped.reference.control.VirtualDiscreteController;
+import biped.reference.control.PlantFlowController;
+import biped.reference.control.ReferenceJumpController;
+import biped.reference.control.VirtualFlowController;
+import biped.reference.control.VirtualJumpController;
 import biped.virtual.hybridsystem.Cp;
 import biped.virtual.hybridsystem.Dp;
 import biped.virtual.hybridsystem.Fp;
@@ -15,10 +14,10 @@ import biped.virtual.hybridsystem.Parameters;
 import biped.virtual.hybridsystem.State;
 import biped.virtual.hybridsystem.TrajectoryParameters;
 import edu.ucsc.cross.hse.core.environment.HSEnvironment;
-import edu.ucsc.cross.hse.core.label.Label;
+import edu.ucsc.cross.hse.core.modeling.Controller;
 import edu.ucsc.cross.hse.core.modeling.HybridSys;
-import edu.ucsc.cross.hse.core.network.Network;
-import edu.ucsc.cross.hse.core.network.SubNode;
+import edu.ucsc.cross.hse.core.modeling.Output;
+import edu.ucsc.cross.hse.core.variable.RandomVariable;
 
 /**
  * A content loader
@@ -34,43 +33,103 @@ public class ContentLoader {
 	public static void loadEnvironmentContent(HSEnvironment environment) {
 
 		// Initialize the parameters
-		Parameters parameters = new Parameters(biped.hybridsystem.Parameters.getTestParams());
-		// Initialize the state
-		State state = new State(biped.hybridsystem.State.getRandomizedState(parameters.bipedParams), parameters);
+		Parameters parameters = generateParameters(true);
+		// Initialize the hybrid systems
+		createSystems(parameters, environment);
 
-		// Initialize the hybrid system
-		createSystems(environment);
-
-		// Add system to environment
 	}
 
-	public static void createSystems(HSEnvironment environment) {
+	public static Parameters generateParameters(boolean randomize) {
 
-		// Initialize the parameters
-		Parameters parameters = new Parameters(biped.hybridsystem.Parameters.getTestParams());
+		biped.hybridsystem.Parameters parameters = new biped.hybridsystem.Parameters();
+		if (!randomize) {
+			parameters.gravity = 9.81;
+			parameters.hipMass = 1.0;
+			parameters.legLength = 1.0;
+			parameters.legMass = 1.0;
+			parameters.stepAngle = .6;
+			parameters.torsoAngle = .2;
+			parameters.torsoLength = 1.0;
+			parameters.torsoMass = 1.0;
+			parameters.useProperTorqueRelationship = true;
+			parameters.walkSpeed = 1.0;
+		} else {
+			parameters = biped.hybridsystem.Parameters.getTestParams();
+		}
+		return new Parameters(parameters);
+
+	}
+
+	public static State generateState(Parameters parameters, boolean randomize) {
+
+		State state = new State(parameters);
+		if (!randomize) {
+			state.bipedState.plantedLegAngle = -0.2;
+			state.bipedState.swingLegAngle = 0.2;
+			state.bipedState.torsoAngle = 0.0;
+			state.bipedState.plantedLegVelocity = 0.0;
+			state.bipedState.swingLegVelocity = 0.0;
+			state.bipedState.torsoVelocity = 0.0;
+		} else {
+			double stepAngle = parameters.bipedParams.stepAngle;
+			double torsoAngle = parameters.bipedParams.torsoAngle;
+			double velocity = 1.0;
+			state.bipedState.plantedLegAngle = RandomVariable.generate(-.95 * stepAngle, 0.0);
+			state.bipedState.swingLegAngle = RandomVariable.generate(0.0, .95 * stepAngle);
+			state.bipedState.torsoAngle = RandomVariable.generate(-torsoAngle, torsoAngle);
+			state.bipedState.plantedLegVelocity = RandomVariable.generate(-velocity, velocity);
+			state.bipedState.swingLegVelocity = RandomVariable.generate(-velocity, velocity);
+			state.bipedState.torsoVelocity = RandomVariable.generate(-velocity, velocity);
+		}
+		return state;
+	}
+
+	public static State generateReferenceState(Parameters parameters) {
+
+		State state = new State(parameters.equilibParams.initialState, parameters);
+		return state;
+	}
+
+	public static void createSystems(Parameters parameters, HSEnvironment environment) {
+
 		// Initialize the state
-		State state = new State(biped.hybridsystem.State.getRandomizedState(parameters.bipedParams), parameters);
+		State referenceState = generateState(parameters, false);
 		// Initialize the state
-		State state2 = new State(biped.hybridsystem.State.getRandomizedState(parameters.bipedParams), parameters);// Initialize
-																													// the
-																													// state
-		biped.hybridsystem.State state3 = new State(biped.hybridsystem.State.getRandomizedState(parameters.bipedParams),
-				parameters).bipedState;
+		State virtualState = generateState(parameters, false);
+		// Initialize the state
+		biped.hybridsystem.State plantState = generateState(parameters, false).bipedState;
 
-		HybridSys<State> system = createVirtualSystem(state, parameters, new BipedReferenceControl(parameters),
-				new DiscreteController(parameters));
-		HybridSys<State> system2 = createVirtualSystem(state2, parameters, new BipedReferenceControl(parameters),
-				new VirtualDiscreteController(parameters));
-		HybridSys<biped.hybridsystem.State> system3 = createRealSystem(state3, parameters.bipedParams,
-				new BipedTrackingController(parameters.bipedParams));
+		// Initialize the reference flow controller
+		VirtualFlowController referenceFlowControl = new VirtualFlowController(parameters);
+		// Initialize the reference jump controller
+		ReferenceJumpController referenceJumpControl = new ReferenceJumpController(parameters);
 
-		Network.getGlobal().connect(state, state.bipedState, Label.get(Link.PLANT_TO_VIRTUAL.toString()));
-		Network.getGlobal().connect(state2, state, Label.get(Link.REFERENCE_TO_VIRTUAL.toString()));
-		Network.getGlobal().connect(state, state2, Label.get(Link.REFERENCE_TO_VIRTUAL.toString()));
-		Network.getGlobal().connect(state2, state3, Label.get(Link.PLANT_TO_VIRTUAL.toString()));
-		Network.getGlobal().connect(state3, state2.bipedState, Label.get(Link.PLANT_TO_VIRTUAL.toString()));
+		// Initialize the virtual flow controller
+		VirtualFlowController virtualFlowControl = new VirtualFlowController(parameters);
+		// Initialize the virtual jump controller
+		VirtualJumpController virtualJumpControl = new VirtualJumpController(parameters);
+		// Initialize the plant flow controller
+		PlantFlowController plantFlowControl = new PlantFlowController(parameters.bipedParams);
 
-		environment.getSystems().add(system, system2, system3);
+		// Initialize the reference system
+		HybridSys<State> referenceSystem = createVirtualSystem(referenceState, parameters, referenceFlowControl,
+				referenceJumpControl);
+		// Initialize the reference system
+		HybridSys<biped.hybridsystem.State> plantSystem = createRealSystem(plantState, parameters.bipedParams,
+				plantFlowControl);
+		// Initialize the virtual system
+		HybridSys<State> virtualSystem = createVirtualSystem(virtualState, parameters, virtualFlowControl,
+				virtualJumpControl, plantSystem);
+
+		// Connect virtual to plant
+		virtualJumpControl.connectPlantSystem(plantSystem);
+		// Connect virtual to reference
+		virtualJumpControl.connectReferenceSystem(referenceSystem);
+		// Connect plant to virtual
+		plantFlowControl.connectVirtualSystem(virtualSystem);
+
+		// Add systems to the environment
+		environment.getSystems().add(referenceSystem, virtualSystem, plantSystem);
 	}
 
 	/**
@@ -95,7 +154,26 @@ public class ContentLoader {
 		// Initialize the jump set
 		Dp d = new Dp(parameters);
 		// Initialize the hybrid system
-		HybridSys<State> system = new HybridSys<State>(state, f, g, c, d, parameters);
+		HybridSys<State> system = new HybridSys<State>(
+				new State(parameters.equilibParams.getInitialState(), parameters), f, g, c, d);
+		return system;
+	}
+
+	/**
+	 * Create the hybrid system
+	 * 
+	 * @param state
+	 *            system state
+	 * @param parameters
+	 *            system parameters
+	 * @return initialized hybrid system
+	 */
+	public static HybridSys<State> createVirtualSystem(State state, Parameters parameters,
+			Controller<State, Matrix> continuous_controller,
+			Controller<State, TrajectoryParameters> discrete_controller, Output<biped.hybridsystem.State> plant) {
+
+		HybridSys<State> system = createVirtualSystem(state, parameters, continuous_controller, discrete_controller);
+		system.setJumpSet(new Dp(parameters, plant));
 		return system;
 	}
 
@@ -127,15 +205,4 @@ public class ContentLoader {
 		return system;
 	}
 
-	public static <Z, Q> Z getConnected(Q source, Class<Z> conn_class, String... labels) {
-
-		SubNode<Q, Z> node = Network.getGlobal().getSubNode(source, conn_class, labels);
-		Z item = null;
-		if (node.getIncoming().size() > 0) {
-			item = node.getIncoming().get(0).getSource();
-		} else if (node.getOutgoing().size() > 0) {
-			item = node.getOutgoing().get(0).getTarget();
-		}
-		return item;
-	}
 }

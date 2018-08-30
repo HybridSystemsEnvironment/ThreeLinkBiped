@@ -2,16 +2,14 @@
 package biped.reference.control;
 
 import Jama.Matrix;
-import biped.application.Controller;
 import biped.computations.BipedComputer;
-import biped.hybridsystem.Link;
 import biped.hybridsystem.Parameters;
 import biped.hybridsystem.State;
-import edu.ucsc.cross.hse.core.network.Network;
-import edu.ucsc.cross.hse.core.network.SubNode;
+import edu.ucsc.cross.hse.core.modeling.Controller;
+import edu.ucsc.cross.hse.core.modeling.Output;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedMotion;
 
-public class BipedTrackingController implements Controller<biped.hybridsystem.State, Matrix> {
+public class PlantFlowController implements Controller<biped.hybridsystem.State, Matrix> {
 
 	public Parameters parameters;
 
@@ -19,7 +17,14 @@ public class BipedTrackingController implements Controller<biped.hybridsystem.St
 
 	public Double kTwo;
 
-	public BipedTrackingController(Parameters parameters) {
+	Output<biped.virtual.hybridsystem.State> virtual;
+
+	public PlantFlowController(Parameters parameters) {
+
+		this(parameters, 2000.0, 100.0);
+	}
+
+	public PlantFlowController(Parameters parameters, double k_one, double k_two) {
 
 		this.parameters = parameters;
 		kOne = (2000.0);
@@ -58,13 +63,18 @@ public class BipedTrackingController implements Controller<biped.hybridsystem.St
 	@Override
 	public Matrix k(State state) {
 
-		SubNode<State, biped.virtual.hybridsystem.State> node = Network.getGlobal().getSubNode(state,
-				biped.virtual.hybridsystem.State.class, Link.PLANT_TO_VIRTUAL.toString());
-		// System.out.println(XMLParser.serializeObject(node));
-		biped.virtual.hybridsystem.State trigger = node.getIncoming().get(0).getSource();
-		Matrix virtualAcceleration = BipedReferenceControl.computeOrbitTrackingAccelerations(trigger);
-		Matrix controlAccel = virtualAcceleration.plusEquals(getComputedAcceleration(state, trigger.bipedState));
+		Matrix virtualAcceleration = VirtualFlowController.computeOrbitTrackingAccelerations(virtual.y());
+		Matrix controlAccel = virtualAcceleration.plusEquals(getComputedAcceleration(state, virtual.y().bipedState));
 
 		return computeControlInput(state, controlAccel);
+	}
+
+	/**
+	 * @param virtual
+	 *            the virtual to set
+	 */
+	public void connectVirtualSystem(Output<biped.virtual.hybridsystem.State> virtual) {
+
+		this.virtual = virtual;
 	}
 }

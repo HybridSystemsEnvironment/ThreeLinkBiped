@@ -1,5 +1,5 @@
 
-package biped.reference.control;
+package net.biped.reference.control;
 
 import biped.application.Controller;
 import biped.computations.BipedComputer;

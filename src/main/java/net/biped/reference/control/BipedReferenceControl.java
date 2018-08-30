@@ -1,5 +1,5 @@
 
-package biped.reference.control;
+package net.biped.reference.control;
 
 import Jama.Matrix;
 import biped.application.Controller;

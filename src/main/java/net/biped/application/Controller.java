@@ -38,7 +38,7 @@
  *
  */
 
-package biped.application;
+package net.biped.application;
 
 /**
  * This interface is used to define a controller for an input of type of X that
