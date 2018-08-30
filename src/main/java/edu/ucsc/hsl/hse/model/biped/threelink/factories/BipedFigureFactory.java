@@ -53,12 +53,12 @@ public class BipedFigureFactory {
 		ChartPanel tV = ChartUtils.createPanel(solution, HybridTime.TIME, "torsoVelocity", ChartType.LINE,
 				getDefaultBipedRenderer(), null);
 
-		figure.addComponent(1, 0, pA);
-		figure.addComponent(2, 0, sA);
-		figure.addComponent(3, 0, tA);
-		figure.addComponent(1, 1, pV);
-		figure.addComponent(2, 1, sV);
-		figure.addComponent(3, 1, tV);
+		figure.add(1, 0, pA);
+		figure.add(2, 0, sA);
+		figure.add(3, 0, tA);
+		figure.add(1, 1, pV);
+		figure.add(2, 1, sV);
+		figure.add(3, 1, tV);
 
 		ChartUtils.configureLabels(pA, "Time (sec)", "Planted Leg Angle (rad)", null, false);
 		ChartUtils.configureLabels(sA, "Time (sec)", "Swing Leg Angle (rad)", null, false);
@@ -82,10 +82,10 @@ public class BipedFigureFactory {
 
 		ChartPanel pert = ChartUtils.createPanel(solution, HybridTime.TIME, "perturbationAngle", ChartType.LINE,
 				getDefaultBipedRenderer(), null);
-		figure.addComponent(0, 0, pA);
-		figure.addComponent(0, 1, sA);
+		figure.add(0, 0, pA);
+		figure.add(0, 1, sA);
 
-		figure.addComponent(0, 2, pert);
+		figure.add(0, 2, pert);
 
 		ChartUtils.configureLabels(pA, null, "Planted Leg Angle (rad)", null, false);
 		ChartUtils.configureLabels(sA, null, "Swing Leg Angle (rad)", null, true);
@@ -112,13 +112,13 @@ public class BipedFigureFactory {
 				getDefaultBipedRenderer(), null);
 		ChartPanel pert = ChartUtils.createPanel(solution, HybridTime.TIME, "perturbationAngle", ChartType.LINE,
 				getDefaultBipedRenderer(), null);
-		figure.addComponent(0, 1, pA);
-		figure.addComponent(0, 2, sA);
-		figure.addComponent(0, 3, tA);
-		figure.addComponent(0, 4, pV);
-		figure.addComponent(0, 5, sV);
-		figure.addComponent(0, 6, tV);
-		figure.addComponent(0, 7, pert);
+		figure.add(0, 1, pA);
+		figure.add(0, 2, sA);
+		figure.add(0, 3, tA);
+		figure.add(0, 4, pV);
+		figure.add(0, 5, sV);
+		figure.add(0, 6, tV);
+		figure.add(0, 7, pert);
 
 		ChartUtils.configureLabels(pA, null, "Planted Angle (rad)", null, false);
 		ChartUtils.configureLabels(sA, null, "Swing Angle (rad)", null, false);
@@ -165,15 +165,15 @@ public class BipedFigureFactory {
 		LegendPanel leg = new LegendPanel();
 		leg.addChart(pAC.getChart());
 		FigurePanel figurem = new FigurePanel();
-		figurem.addComponent(1, 1, pA.getContentPanel());
-		figurem.addComponent(1, 2, sA.getContentPanel());
-		figurem.addComponent(1, 3, tA.getContentPanel());
-		figurem.addComponent(1, 4, pV.getContentPanel());
+		figurem.add(1, 1, pA.getContentPanel());
+		figurem.add(1, 2, sA.getContentPanel());
+		figurem.add(1, 3, tA.getContentPanel());
+		figurem.add(1, 4, pV.getContentPanel());
 
 		leg.setPreferredSize(new Dimension(1200, 30));
 		figurem.setBottom(leg);
 
-		figure.addComponent(1, 1, figurem.getContentPanel());
+		figure.add(1, 1, figurem.getContentPanel());
 
 		// figurem.display(1200, 1000);
 		// ChartUtils.configureLabels(pA, "Time (sec)", "Planted Leg
@@ -235,16 +235,16 @@ public class BipedFigureFactory {
 		// LegendPanel leg = new LegendPanel();
 		// leg.addChart(pAC.getChart());
 		FigurePanel figurem = new FigurePanel();
-		figurem.addComponent(1, 1, pA.getContentPanel());
-		figurem.addComponent(2, 1, sA.getContentPanel());
-		figurem.addComponent(3, 1, tA.getContentPanel());
-		figurem.addComponent(1, 2, pV.getContentPanel());
-		figurem.addComponent(2, 2, sV.getContentPanel());
-		figurem.addComponent(3, 2, tV.getContentPanel());
+		figurem.add(1, 1, pA.getContentPanel());
+		figurem.add(2, 1, sA.getContentPanel());
+		figurem.add(3, 1, tA.getContentPanel());
+		figurem.add(1, 2, pV.getContentPanel());
+		figurem.add(2, 2, sV.getContentPanel());
+		figurem.add(3, 2, tV.getContentPanel());
 		// leg.setPreferredSize(new Dimension(1200, 30));
 		// figurem.setBottom(leg);
 
-		figure.addComponent(1, 1, figurem.getContentPanel());
+		figure.add(1, 1, figurem.getContentPanel());
 
 		// figurem.display(1200, 1000);
 		// ChartUtils.configureLabels(pA, "Time (sec)", "Planted Leg

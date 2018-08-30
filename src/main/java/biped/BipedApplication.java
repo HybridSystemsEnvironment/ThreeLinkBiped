@@ -138,8 +138,8 @@ public class BipedApplication {
 		ChartUtils.configureLabels(yPos, "Time (sec)", "Y Position (m)", null, false);
 		ChartUtils.configureLabels(yVel, "Time (sec)", "Y Velocity (m/s)", null, false);
 		// Add charts to figure
-		figure.addComponent(0, 0, yPos);
-		figure.addComponent(0, 1, yVel);
+		figure.add(0, 0, yPos);
+		figure.add(0, 1, yVel);
 		// Return generated figure
 		return figure;
 	}

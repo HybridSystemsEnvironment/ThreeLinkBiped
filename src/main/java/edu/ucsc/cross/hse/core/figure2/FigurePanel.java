@@ -76,7 +76,7 @@ public class FigurePanel {
 	public FigurePanel(ChartPanel panel) {
 
 		this(defaultWidth, defaultHeight);
-		addComponent(1, 1, panel);
+		add(1, 1, panel);
 	}
 
 	/**
@@ -254,7 +254,7 @@ public class FigurePanel {
 	 * @param component
 	 *            component to be displayed in the figure
 	 */
-	public void addComponent(int x, int y, Component component) {
+	public void add(int x, int y, Component component) {
 
 		expandContentGridLayout(x, y);
 		// GridBagConstraints con = new GridBagConstraints();
