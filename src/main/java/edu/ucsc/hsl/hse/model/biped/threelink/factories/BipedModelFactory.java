@@ -2,8 +2,8 @@
 package edu.ucsc.hsl.hse.model.biped.threelink.factories;
 
 import biped.reference.control.BipedReferenceControl;
+import biped.reference.control.BipedTrackingController;
 import edu.ucsc.cross.hse.core.variable.RandomVariable;
-import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedTrackingController;
 import edu.ucsc.hsl.hse.model.biped.threelink.controllers.BipedVirtualControl;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.BipedParameters;
 import edu.ucsc.hsl.hse.model.biped.threelink.parameters.PerturbationParameters;

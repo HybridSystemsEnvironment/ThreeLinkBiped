@@ -1,6 +1,8 @@
 
 package biped.hybridsystem;
 
+import com.be3short.io.xml.XMLParser;
+
 import biped.computations.BipedComputer;
 import edu.ucsc.cross.hse.core.modeling.JumpMap;
 
@@ -34,6 +36,8 @@ public class Gp implements JumpMap<State> {
 	public void G(State x, State x_plus) {
 
 		BipedComputer.computeChangeAtImpact(x, x_plus, parameters);
+		System.out.println(XMLParser.serializeObject(this));
+		// System.exit(0);
 	}
 
 }

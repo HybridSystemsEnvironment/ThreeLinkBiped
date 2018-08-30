@@ -32,8 +32,8 @@ public class ConfigurationLoader {
 		settings.domainPriority = DomainPriority.JUMP;
 		settings.storeNonPrimativeData = false;
 		// Specify integrator parameter values
-		double odeMaximumStepSize = 1e-1;
-		double odeMinimumStepSize = 1e-3;
+		double odeMaximumStepSize = 1e-3;
+		double odeMinimumStepSize = 1e-9;
 		double odeRelativeTolerance = 1.0e-6;
 		double odeSolverAbsoluteTolerance = 1.0e-6;
 		// Create and store integrator factory

@@ -31,7 +31,7 @@ public class BipedReferenceControl implements Controller<State, Matrix> {
 		return controlUnbounded;
 	}
 
-	public Matrix computeOrbitTrackingAccelerations(State biped) {
+	public static Matrix computeOrbitTrackingAccelerations(State biped) {
 
 		double[][] mat = new double[3][1];
 		Double currTime = biped.trajTimer;

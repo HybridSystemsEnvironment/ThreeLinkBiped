@@ -3,7 +3,10 @@ package biped.virtual.hybridsystem;
 
 import biped.application.Controller;
 import biped.computations.BipedComputer;
+import biped.hybridsystem.Link;
 import edu.ucsc.cross.hse.core.modeling.JumpMap;
+import edu.ucsc.cross.hse.core.network.Network;
+import edu.ucsc.cross.hse.core.network.SubNode;
 
 /**
  * A jump map
@@ -40,7 +43,11 @@ public class Gp implements JumpMap<State> {
 	@Override
 	public void G(State x, State x_plus) {
 
-		TrajectoryParameters newTrajParams = controller.k(x);
+		SubNode<State, biped.hybridsystem.State> node = Network.getGlobal().getSubNode(x,
+				biped.hybridsystem.State.class, Link.PLANT_TO_VIRTUAL.toString());
+		// System.out.println(XMLParser.serializeObject(node));
+		State trigger = node.getOutgoing().get(0).getSource();
+		TrajectoryParameters newTrajParams = controller.k(trigger);
 		BipedComputer.computeChangeAtImpact(x.bipedState, x_plus.bipedState, parameters.bipedParams);
 		x_plus.trajectoryParameters.B0 = newTrajParams.B0;
 		x_plus.trajectoryParameters.B1 = newTrajParams.B1;

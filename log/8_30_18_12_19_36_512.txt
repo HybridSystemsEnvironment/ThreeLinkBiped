@@ -1,0 +1,866 @@
+[12:19:36.544][info] Environment started  [15/246 mB]
+[12:19:36.639][info] status: 0.00%  complete : sim time = 0.00 : jumps = 0  [18/246 mB]
+[12:19:37.479][error] Apply Dynamics Error on class edu.ucsc.cross.hse.core.modeling.HybridSys with state: 
+<biped.virtual.hybridsystem.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>2.1917654152614605</trajTimer>
+  <trajectoryParameters>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>1.536800129401278</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-4.33882795484998</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.2384832413611495</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>2.147013975682114</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-5.083831214164938</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.9995346673448298</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.49061305419398926</plantedLegAngle>
+      <swingLegAngle>0.15663131429005459</swingLegAngle>
+      <torsoAngle>0.2698132239106785</torsoAngle>
+      <plantedLegVelocity>0.34746042426275275</plantedLegVelocity>
+      <swingLegVelocity>0.35249273983705914</swingLegVelocity>
+      <torsoVelocity>0.10722257442430151</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.7</plantedLegAngle>
+      <swingLegAngle>-0.7</swingLegAngle>
+      <torsoAngle>0.5</torsoAngle>
+      <plantedLegVelocity>2.298171817283482</plantedLegVelocity>
+      <swingLegVelocity>2.7568463377021297</swingLegVelocity>
+      <torsoVelocity>-1.5429206320678275</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>1</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.696540171644461</plantedLegAngle>
+    <swingLegAngle>-0.8052322351054976</swingLegAngle>
+    <torsoAngle>0.5377032041369272</torsoAngle>
+    <plantedLegVelocity>2.365672270769829</plantedLegVelocity>
+    <swingLegVelocity>2.8756637957607163</swingLegVelocity>
+    <torsoVelocity>-1.6062157847310972</torsoVelocity>
+  </bipedState>
+</biped.virtual.hybridsystem.State>  [41/246 mB]
+java.lang.IllegalArgumentException: no such vertex in graph: biped.hybridsystem.State@71d15f18
+	at org.jgrapht.graph.AbstractGraph.assertVertexExist(AbstractGraph.java:132)
+	at org.jgrapht.graph.AbstractBaseGraph.edgesOf(AbstractBaseGraph.java:338)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at edu.ucsc.cross.hse.core.network.Network.getConnections(Network.java:261)
+	at edu.ucsc.cross.hse.core.network.SubNode.updateConnections(SubNode.java:49)
+	at edu.ucsc.cross.hse.core.network.SubNode.<init>(SubNode.java:30)
+	at edu.ucsc.cross.hse.core.network.Network.getSubNode(Network.java:290)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:33)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:1)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:50)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:1)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:133)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:52)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.application.HSEApplication.main(HSEApplication.java:26)
+[12:19:37.499][error] Apply Dynamics Error on class edu.ucsc.cross.hse.core.modeling.HybridSys with state: 
+<biped.virtual.hybridsystem.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>2.1917654152614605</trajTimer>
+  <trajectoryParameters>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>1.536800129401278</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-4.33882795484998</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.2384832413611495</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>2.147013975682114</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-5.083831214164938</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.9995346673448298</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.49061305419398926</plantedLegAngle>
+      <swingLegAngle>0.15663131429005459</swingLegAngle>
+      <torsoAngle>0.2698132239106785</torsoAngle>
+      <plantedLegVelocity>0.34746042426275275</plantedLegVelocity>
+      <swingLegVelocity>0.35249273983705914</swingLegVelocity>
+      <torsoVelocity>0.10722257442430151</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.7</plantedLegAngle>
+      <swingLegAngle>-0.7</swingLegAngle>
+      <torsoAngle>0.5</torsoAngle>
+      <plantedLegVelocity>2.298171817283482</plantedLegVelocity>
+      <swingLegVelocity>2.7568463377021297</swingLegVelocity>
+      <torsoVelocity>-1.5429206320678275</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>1</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.696540171644461</plantedLegAngle>
+    <swingLegAngle>-0.8052322351054976</swingLegAngle>
+    <torsoAngle>0.5377032041369272</torsoAngle>
+    <plantedLegVelocity>2.365672270769829</plantedLegVelocity>
+    <swingLegVelocity>2.8756637957607163</swingLegVelocity>
+    <torsoVelocity>-1.6062157847310972</torsoVelocity>
+  </bipedState>
+</biped.virtual.hybridsystem.State>  [41/246 mB]
+java.lang.IllegalArgumentException: no such vertex in graph: biped.hybridsystem.State@71d15f18
+	at org.jgrapht.graph.AbstractGraph.assertVertexExist(AbstractGraph.java:132)
+	at org.jgrapht.graph.AbstractBaseGraph.edgesOf(AbstractBaseGraph.java:338)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at edu.ucsc.cross.hse.core.network.Network.getConnections(Network.java:261)
+	at edu.ucsc.cross.hse.core.network.SubNode.updateConnections(SubNode.java:49)
+	at edu.ucsc.cross.hse.core.network.SubNode.<init>(SubNode.java:30)
+	at edu.ucsc.cross.hse.core.network.Network.getSubNode(Network.java:290)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:33)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:1)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:50)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:1)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:133)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:52)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.application.HSEApplication.main(HSEApplication.java:26)
+[12:19:37.516][error] Apply Dynamics Error on class edu.ucsc.cross.hse.core.modeling.HybridSys with state: 
+<biped.virtual.hybridsystem.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>2.1917654152614605</trajTimer>
+  <trajectoryParameters>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>1.536800129401278</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-4.33882795484998</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.2384832413611495</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>2.147013975682114</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-5.083831214164938</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.9995346673448298</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.49061305419398926</plantedLegAngle>
+      <swingLegAngle>0.15663131429005459</swingLegAngle>
+      <torsoAngle>0.2698132239106785</torsoAngle>
+      <plantedLegVelocity>0.34746042426275275</plantedLegVelocity>
+      <swingLegVelocity>0.35249273983705914</swingLegVelocity>
+      <torsoVelocity>0.10722257442430151</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.7</plantedLegAngle>
+      <swingLegAngle>-0.7</swingLegAngle>
+      <torsoAngle>0.5</torsoAngle>
+      <plantedLegVelocity>2.298171817283482</plantedLegVelocity>
+      <swingLegVelocity>2.7568463377021297</swingLegVelocity>
+      <torsoVelocity>-1.5429206320678275</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>1</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.696540171644461</plantedLegAngle>
+    <swingLegAngle>-0.8052322351054976</swingLegAngle>
+    <torsoAngle>0.5377032041369272</torsoAngle>
+    <plantedLegVelocity>2.365672270769829</plantedLegVelocity>
+    <swingLegVelocity>2.8756637957607163</swingLegVelocity>
+    <torsoVelocity>-1.6062157847310972</torsoVelocity>
+  </bipedState>
+</biped.virtual.hybridsystem.State>  [41/246 mB]
+java.lang.IllegalArgumentException: no such vertex in graph: biped.hybridsystem.State@71d15f18
+	at org.jgrapht.graph.AbstractGraph.assertVertexExist(AbstractGraph.java:132)
+	at org.jgrapht.graph.AbstractBaseGraph.edgesOf(AbstractBaseGraph.java:338)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at edu.ucsc.cross.hse.core.network.Network.getConnections(Network.java:261)
+	at edu.ucsc.cross.hse.core.network.SubNode.updateConnections(SubNode.java:49)
+	at edu.ucsc.cross.hse.core.network.SubNode.<init>(SubNode.java:30)
+	at edu.ucsc.cross.hse.core.network.Network.getSubNode(Network.java:290)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:33)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:1)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:50)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:1)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:133)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:52)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.application.HSEApplication.main(HSEApplication.java:26)
+[12:19:37.528][error] Apply Dynamics Error on class edu.ucsc.cross.hse.core.modeling.HybridSys with state: 
+<biped.virtual.hybridsystem.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>2.1917654152614605</trajTimer>
+  <trajectoryParameters>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>1.536800129401278</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-4.33882795484998</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.2384832413611495</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>2.147013975682114</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-5.083831214164938</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.9995346673448298</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.49061305419398926</plantedLegAngle>
+      <swingLegAngle>0.15663131429005459</swingLegAngle>
+      <torsoAngle>0.2698132239106785</torsoAngle>
+      <plantedLegVelocity>0.34746042426275275</plantedLegVelocity>
+      <swingLegVelocity>0.35249273983705914</swingLegVelocity>
+      <torsoVelocity>0.10722257442430151</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.7</plantedLegAngle>
+      <swingLegAngle>-0.7</swingLegAngle>
+      <torsoAngle>0.5</torsoAngle>
+      <plantedLegVelocity>2.298171817283482</plantedLegVelocity>
+      <swingLegVelocity>2.7568463377021297</swingLegVelocity>
+      <torsoVelocity>-1.5429206320678275</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>1</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.696540171644461</plantedLegAngle>
+    <swingLegAngle>-0.8052322351054976</swingLegAngle>
+    <torsoAngle>0.5377032041369272</torsoAngle>
+    <plantedLegVelocity>2.365672270769829</plantedLegVelocity>
+    <swingLegVelocity>2.8756637957607163</swingLegVelocity>
+    <torsoVelocity>-1.6062157847310972</torsoVelocity>
+  </bipedState>
+</biped.virtual.hybridsystem.State>  [43/246 mB]
+java.lang.IllegalArgumentException: no such vertex in graph: biped.hybridsystem.State@71d15f18
+	at org.jgrapht.graph.AbstractGraph.assertVertexExist(AbstractGraph.java:132)
+	at org.jgrapht.graph.AbstractBaseGraph.edgesOf(AbstractBaseGraph.java:338)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at edu.ucsc.cross.hse.core.network.Network.getConnections(Network.java:261)
+	at edu.ucsc.cross.hse.core.network.SubNode.updateConnections(SubNode.java:49)
+	at edu.ucsc.cross.hse.core.network.SubNode.<init>(SubNode.java:30)
+	at edu.ucsc.cross.hse.core.network.Network.getSubNode(Network.java:290)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:33)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:1)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:50)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:1)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:133)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:52)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.application.HSEApplication.main(HSEApplication.java:26)
+[12:19:37.536][error] Apply Dynamics Error on class edu.ucsc.cross.hse.core.modeling.HybridSys with state: 
+<biped.virtual.hybridsystem.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>2.1917654152614605</trajTimer>
+  <trajectoryParameters>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>1.536800129401278</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-4.33882795484998</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.2384832413611495</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>2.147013975682114</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-5.083831214164938</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.9995346673448298</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.49061305419398926</plantedLegAngle>
+      <swingLegAngle>0.15663131429005459</swingLegAngle>
+      <torsoAngle>0.2698132239106785</torsoAngle>
+      <plantedLegVelocity>0.34746042426275275</plantedLegVelocity>
+      <swingLegVelocity>0.35249273983705914</swingLegVelocity>
+      <torsoVelocity>0.10722257442430151</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.7</plantedLegAngle>
+      <swingLegAngle>-0.7</swingLegAngle>
+      <torsoAngle>0.5</torsoAngle>
+      <plantedLegVelocity>2.298171817283482</plantedLegVelocity>
+      <swingLegVelocity>2.7568463377021297</swingLegVelocity>
+      <torsoVelocity>-1.5429206320678275</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>1</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.696540171644461</plantedLegAngle>
+    <swingLegAngle>-0.8052322351054976</swingLegAngle>
+    <torsoAngle>0.5377032041369272</torsoAngle>
+    <plantedLegVelocity>2.365672270769829</plantedLegVelocity>
+    <swingLegVelocity>2.8756637957607163</swingLegVelocity>
+    <torsoVelocity>-1.6062157847310972</torsoVelocity>
+  </bipedState>
+</biped.virtual.hybridsystem.State>  [43/246 mB]
+java.lang.IllegalArgumentException: no such vertex in graph: biped.hybridsystem.State@71d15f18
+	at org.jgrapht.graph.AbstractGraph.assertVertexExist(AbstractGraph.java:132)
+	at org.jgrapht.graph.AbstractBaseGraph.edgesOf(AbstractBaseGraph.java:338)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at edu.ucsc.cross.hse.core.network.Network.getConnections(Network.java:261)
+	at edu.ucsc.cross.hse.core.network.SubNode.updateConnections(SubNode.java:49)
+	at edu.ucsc.cross.hse.core.network.SubNode.<init>(SubNode.java:30)
+	at edu.ucsc.cross.hse.core.network.Network.getSubNode(Network.java:290)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:33)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:1)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:50)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:1)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:133)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:52)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.application.HSEApplication.main(HSEApplication.java:26)
+[12:19:37.568][error] Apply Dynamics Error on class edu.ucsc.cross.hse.core.modeling.HybridSys with state: 
+<biped.virtual.hybridsystem.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>2.1917654152614605</trajTimer>
+  <trajectoryParameters>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>1.536800129401278</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-4.33882795484998</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.2384832413611495</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>2.147013975682114</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-5.083831214164938</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.9995346673448298</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.49061305419398926</plantedLegAngle>
+      <swingLegAngle>0.15663131429005459</swingLegAngle>
+      <torsoAngle>0.2698132239106785</torsoAngle>
+      <plantedLegVelocity>0.34746042426275275</plantedLegVelocity>
+      <swingLegVelocity>0.35249273983705914</swingLegVelocity>
+      <torsoVelocity>0.10722257442430151</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.7</plantedLegAngle>
+      <swingLegAngle>-0.7</swingLegAngle>
+      <torsoAngle>0.5</torsoAngle>
+      <plantedLegVelocity>2.298171817283482</plantedLegVelocity>
+      <swingLegVelocity>2.7568463377021297</swingLegVelocity>
+      <torsoVelocity>-1.5429206320678275</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>1</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.696540171644461</plantedLegAngle>
+    <swingLegAngle>-0.8052322351054976</swingLegAngle>
+    <torsoAngle>0.5377032041369272</torsoAngle>
+    <plantedLegVelocity>2.365672270769829</plantedLegVelocity>
+    <swingLegVelocity>2.8756637957607163</swingLegVelocity>
+    <torsoVelocity>-1.6062157847310972</torsoVelocity>
+  </bipedState>
+</biped.virtual.hybridsystem.State>  [44/246 mB]
+java.lang.IllegalArgumentException: no such vertex in graph: biped.hybridsystem.State@71d15f18
+	at org.jgrapht.graph.AbstractGraph.assertVertexExist(AbstractGraph.java:132)
+	at org.jgrapht.graph.AbstractBaseGraph.edgesOf(AbstractBaseGraph.java:338)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at edu.ucsc.cross.hse.core.network.Network.getConnections(Network.java:261)
+	at edu.ucsc.cross.hse.core.network.SubNode.updateConnections(SubNode.java:49)
+	at edu.ucsc.cross.hse.core.network.SubNode.<init>(SubNode.java:30)
+	at edu.ucsc.cross.hse.core.network.Network.getSubNode(Network.java:290)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:33)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:1)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:50)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:1)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:133)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:52)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.application.HSEApplication.main(HSEApplication.java:26)
+[12:19:37.580][error] Apply Dynamics Error on class edu.ucsc.cross.hse.core.modeling.HybridSys with state: 
+<biped.virtual.hybridsystem.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>2.1917654152614605</trajTimer>
+  <trajectoryParameters>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>1.536800129401278</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-4.33882795484998</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.2384832413611495</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>2.147013975682114</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-5.083831214164938</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.9995346673448298</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.49061305419398926</plantedLegAngle>
+      <swingLegAngle>0.15663131429005459</swingLegAngle>
+      <torsoAngle>0.2698132239106785</torsoAngle>
+      <plantedLegVelocity>0.34746042426275275</plantedLegVelocity>
+      <swingLegVelocity>0.35249273983705914</swingLegVelocity>
+      <torsoVelocity>0.10722257442430151</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.7</plantedLegAngle>
+      <swingLegAngle>-0.7</swingLegAngle>
+      <torsoAngle>0.5</torsoAngle>
+      <plantedLegVelocity>2.298171817283482</plantedLegVelocity>
+      <swingLegVelocity>2.7568463377021297</swingLegVelocity>
+      <torsoVelocity>-1.5429206320678275</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>1</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.696540171644461</plantedLegAngle>
+    <swingLegAngle>-0.8052322351054976</swingLegAngle>
+    <torsoAngle>0.5377032041369272</torsoAngle>
+    <plantedLegVelocity>2.365672270769829</plantedLegVelocity>
+    <swingLegVelocity>2.8756637957607163</swingLegVelocity>
+    <torsoVelocity>-1.6062157847310972</torsoVelocity>
+  </bipedState>
+</biped.virtual.hybridsystem.State>  [44/246 mB]
+java.lang.IllegalArgumentException: no such vertex in graph: biped.hybridsystem.State@71d15f18
+	at org.jgrapht.graph.AbstractGraph.assertVertexExist(AbstractGraph.java:132)
+	at org.jgrapht.graph.AbstractBaseGraph.edgesOf(AbstractBaseGraph.java:338)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at edu.ucsc.cross.hse.core.network.Network.getConnections(Network.java:261)
+	at edu.ucsc.cross.hse.core.network.SubNode.updateConnections(SubNode.java:49)
+	at edu.ucsc.cross.hse.core.network.SubNode.<init>(SubNode.java:30)
+	at edu.ucsc.cross.hse.core.network.Network.getSubNode(Network.java:290)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:33)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:1)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:50)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:1)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:133)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:52)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.application.HSEApplication.main(HSEApplication.java:26)
+[12:19:37.600][error] Apply Dynamics Error on class edu.ucsc.cross.hse.core.modeling.HybridSys with state: 
+<biped.virtual.hybridsystem.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>2.1917654152614605</trajTimer>
+  <trajectoryParameters>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>1.536800129401278</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-4.33882795484998</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.2384832413611495</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>2.147013975682114</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-5.083831214164938</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>-1.9995346673448298</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.49061305419398926</plantedLegAngle>
+      <swingLegAngle>0.15663131429005459</swingLegAngle>
+      <torsoAngle>0.2698132239106785</torsoAngle>
+      <plantedLegVelocity>0.34746042426275275</plantedLegVelocity>
+      <swingLegVelocity>0.35249273983705914</swingLegVelocity>
+      <torsoVelocity>0.10722257442430151</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>0</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.7</plantedLegAngle>
+      <swingLegAngle>-0.7</swingLegAngle>
+      <torsoAngle>0.5</torsoAngle>
+      <plantedLegVelocity>2.298171817283482</plantedLegVelocity>
+      <swingLegVelocity>2.7568463377021297</swingLegVelocity>
+      <torsoVelocity>-1.5429206320678275</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>1</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.696540171644461</plantedLegAngle>
+    <swingLegAngle>-0.8052322351054976</swingLegAngle>
+    <torsoAngle>0.5377032041369272</torsoAngle>
+    <plantedLegVelocity>2.365672270769829</plantedLegVelocity>
+    <swingLegVelocity>2.8756637957607163</swingLegVelocity>
+    <torsoVelocity>-1.6062157847310972</torsoVelocity>
+  </bipedState>
+</biped.virtual.hybridsystem.State>  [44/246 mB]
+java.lang.IllegalArgumentException: no such vertex in graph: biped.hybridsystem.State@71d15f18
+	at org.jgrapht.graph.AbstractGraph.assertVertexExist(AbstractGraph.java:132)
+	at org.jgrapht.graph.AbstractBaseGraph.edgesOf(AbstractBaseGraph.java:338)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at org.jgrapht.graph.GraphDelegator.edgesOf(GraphDelegator.java:172)
+	at edu.ucsc.cross.hse.core.network.Network.getConnections(Network.java:261)
+	at edu.ucsc.cross.hse.core.network.SubNode.updateConnections(SubNode.java:49)
+	at edu.ucsc.cross.hse.core.network.SubNode.<init>(SubNode.java:30)
+	at edu.ucsc.cross.hse.core.network.Network.getSubNode(Network.java:290)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:33)
+	at biped.reference.control.VirtualDiscreteController.k(VirtualDiscreteController.java:1)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:50)
+	at biped.virtual.hybridsystem.Gp.G(Gp.java:1)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:133)
+	at edu.ucsc.cross.hse.core.modeling.HybridSys.G(HybridSys.java:52)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.application.HSEApplication.main(HSEApplication.java:26)
