@@ -1,26 +1,13 @@
 
 package perturbation.hybridsystem;
 
-import edu.ucsc.cross.hse.core.modeling.JumpMap;
+import edu.ucsc.cross.hse.core.hybridsystem.input.JumpMap;
 import edu.ucsc.cross.hse.core.variable.RandomVariable;
 
 /**
  * A jump map
  */
-public class Gp implements JumpMap<PerturbState> {
-
-	/**
-	 * Parameters
-	 */
-	public Parameters parameters;
-
-	/**
-	 * Constructor for jump map
-	 */
-	public Gp(Parameters parameters) {
-
-		this.parameters = parameters;
-	}
+public class Gp implements JumpMap<State, Parameters> {
 
 	/**
 	 * Jump map
@@ -31,7 +18,7 @@ public class Gp implements JumpMap<PerturbState> {
 	 *            state update values
 	 */
 	@Override
-	public void G(PerturbState x, PerturbState x_plus) {
+	public void G(State x, State x_plus, Parameters parameters) {
 
 		double perturbationAngle = parameters.perturbationPercent * parameters.bipedParameters.stepAngle;
 		if (parameters.randomize) {

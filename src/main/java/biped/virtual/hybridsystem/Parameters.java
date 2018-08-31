@@ -1,24 +1,20 @@
 
 package biped.virtual.hybridsystem;
 
-import biped.hybridsystem.State;
+import biped.parameters.virtual.State;
+import biped.plant.hybridsystem.Port;
 import edu.ucsc.cross.hse.core.modeling.DataStructure;
-import edu.ucsc.hsl.hse.model.biped.threelink.computors.EquilibriumComputer;
 
 /**
  * A parameter set
  */
 public class Parameters extends DataStructure {
 
-	public biped.hybridsystem.Parameters bipedParams;
+	public biped.parameters.virtual.Parameters bipedParams;
 
-	public TrajectoryParameters equilibParams;
+	public Port<State> reference;
 
-	public static State getBipedState(State state) {
-
-		return new State(state.plantedLegAngle, state.swingLegAngle, state.torsoAngle, state.plantedLegVelocity,
-				state.swingLegVelocity, state.torsoVelocity);
-	}
+	public Port<biped.parameters.base.State> plant;
 
 	/**
 	 * Construct the parameters
@@ -27,9 +23,11 @@ public class Parameters extends DataStructure {
 	 *            value to set
 	 * 
 	 */
-	public Parameters(biped.hybridsystem.Parameters traj_params) {
+	public Parameters(biped.parameters.base.Parameters traj_params) {
 
-		bipedParams = traj_params;
-		equilibParams = EquilibriumComputer.getEquilibriumParameters(bipedParams);
+		bipedParams = new biped.parameters.virtual.Parameters(traj_params);
+		plant = new Port<biped.parameters.base.State>();
+		reference = new Port<State>();
+		this.getProperties().setStoreTrajectory(true);
 	}
 }

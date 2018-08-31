@@ -2,18 +2,15 @@
 package biped.virtual.hybridsystem;
 
 import biped.computations.BipedComputer;
+import biped.parameters.base.TrajectoryParameters;
+import biped.parameters.virtual.State;
+import edu.ucsc.cross.hse.core.hybridsystem.input.JumpMap;
 import edu.ucsc.cross.hse.core.modeling.Controller;
-import edu.ucsc.cross.hse.core.modeling.JumpMap;
 
 /**
  * A jump map
  */
-public class Gp implements JumpMap<State> {
-
-	/**
-	 * Parameters
-	 */
-	public Parameters parameters;
+public class Gp implements JumpMap<State, Parameters> {
 
 	/**
 	 * Controller
@@ -23,10 +20,9 @@ public class Gp implements JumpMap<State> {
 	/**
 	 * Constructor for jump map
 	 */
-	public Gp(Controller<State, TrajectoryParameters> controller, Parameters parameters) {
+	public Gp(Controller<State, TrajectoryParameters> controller) {
 
 		this.controller = controller;
-		this.parameters = parameters;
 	}
 
 	/**
@@ -38,9 +34,10 @@ public class Gp implements JumpMap<State> {
 	 *            state update values
 	 */
 	@Override
-	public void G(State x, State x_plus) {
+	public void G(State x, State x_plus, Parameters parameters) {
 
-		biped.hybridsystem.State state = BipedComputer.computeChangeAtImpact(x.bipedState, parameters.bipedParams);
+		biped.parameters.base.State state = BipedComputer.computeChangeAtImpact(x.bipedState,
+				parameters.bipedParams.bipedParams);
 
 		x_plus.bipedState.plantedLegAngle = state.plantedLegAngle;
 		x_plus.bipedState.swingLegAngle = state.swingLegAngle;

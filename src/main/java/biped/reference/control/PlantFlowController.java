@@ -3,12 +3,12 @@ package biped.reference.control;
 
 import Jama.Matrix;
 import biped.computations.BipedComputer;
-import biped.hybridsystem.Parameters;
-import biped.hybridsystem.State;
+import biped.parameters.base.State;
+import biped.plant.hybridsystem.Parameters;
 import edu.ucsc.cross.hse.core.modeling.Controller;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedMotion;
 
-public class PlantFlowController implements Controller<biped.hybridsystem.State, Matrix> {
+public class PlantFlowController implements Controller<State, Matrix> {
 
 	public Parameters parameters;
 
@@ -30,11 +30,11 @@ public class PlantFlowController implements Controller<biped.hybridsystem.State,
 
 	public Matrix computeControlInput(State realBiped, Matrix accelerations) {
 
-		Matrix matD = BipedComputer.computeFlowDMatrix(realBiped, parameters);
-		Matrix matC = BipedComputer.computeFlowCMatrix(realBiped, parameters);
-		Matrix matG = BipedComputer.computeFlowGMatrix(realBiped, parameters);
+		Matrix matD = BipedComputer.computeFlowDMatrix(realBiped, parameters.bipedParams);
+		Matrix matC = BipedComputer.computeFlowCMatrix(realBiped, parameters.bipedParams);
+		Matrix matG = BipedComputer.computeFlowGMatrix(realBiped, parameters.bipedParams);
 		Matrix vels = realBiped.getMotionMatrix(BipedMotion.ANGULAR_VELOCITY);
-		Matrix torqRel = parameters.getTorqueRelationship();
+		Matrix torqRel = parameters.bipedParams.getTorqueRelationship();
 
 		Matrix controlUnbounded = torqRel.inverse()
 				.times(accelerations.minus(matD.inverse().times((matC.times(vels)).minus(matG))));
@@ -60,12 +60,18 @@ public class PlantFlowController implements Controller<biped.hybridsystem.State,
 	@Override
 	public Matrix k(State state) {
 
-		Matrix virtualAcceleration = VirtualFlowController
-				.computeOrbitTrackingAccelerations(parameters.connections.getVirtual().y());
+		Matrix virtualAcceleration = VirtualFlowController.computeOrbitTrackingAccelerations(parameters.virtual.y());
 		Matrix controlAccel = virtualAcceleration
-				.plusEquals(getComputedAcceleration(state, parameters.connections.getVirtual().y().bipedState));
+				.plusEquals(getComputedAcceleration(state, parameters.virtual.y().bipedState));
 
 		return computeControlInput(state, controlAccel);
+	}
+
+	@Override
+	public Matrix u() {
+
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -3,8 +3,8 @@ package biped.reference.control;
 
 import Jama.Matrix;
 import biped.computations.BipedComputer;
-import biped.virtual.hybridsystem.Parameters;
-import biped.virtual.hybridsystem.State;
+import biped.parameters.virtual.Parameters;
+import biped.parameters.virtual.State;
 import edu.ucsc.cross.hse.core.modeling.Controller;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedMotion;
@@ -55,6 +55,13 @@ public class VirtualFlowController implements Controller<State, Matrix> {
 		Matrix accelerations = computeOrbitTrackingAccelerations(state);
 		Matrix control = computeControlInput(state, accelerations);
 		return control;
+	}
+
+	@Override
+	public Matrix u() {
+
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -3,12 +3,12 @@ package biped.virtual.hybridsystem;
 
 import edu.ucsc.cross.hse.core.modeling.Input;
 
-public class GetInput implements Input<biped.hybridsystem.State> {
+public class GetInput implements Input<biped.parameters.base.State> {
 
 	@Override
-	public biped.hybridsystem.State u() {
+	public biped.parameters.base.State u() {
 
-		biped.hybridsystem.State trigger = null;
+		biped.parameters.base.State trigger = null;
 
 		return null;
 	}

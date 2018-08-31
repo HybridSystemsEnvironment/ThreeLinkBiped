@@ -2,9 +2,9 @@
 package biped.reference.control;
 
 import biped.computations.BipedComputer;
+import biped.parameters.base.TrajectoryParameters;
+import biped.parameters.virtual.State;
 import biped.virtual.hybridsystem.Parameters;
-import biped.virtual.hybridsystem.State;
-import biped.virtual.hybridsystem.TrajectoryParameters;
 import edu.ucsc.cross.hse.core.modeling.Controller;
 
 public class VirtualJumpController implements Controller<State, TrajectoryParameters> {
@@ -27,13 +27,20 @@ public class VirtualJumpController implements Controller<State, TrajectoryParame
 	@Override
 	public TrajectoryParameters k(State x) {
 
-		biped.hybridsystem.State plant = parameters.bipedParams.connections.getInput().y();
-		biped.hybridsystem.State x0 = BipedComputer.computeChangeAtImpact(plant, parameters.bipedParams);
-		biped.hybridsystem.State xf = parameters.equilibParams.getFinalState();
-		double tPlus = BipedComputer.computeTimeToNextImpactStep(parameters.bipedParams.connections.getReference().y(),
-				parameters.bipedParams);
-		TrajectoryParameters params = TrajectoryParameters.compute(x0, xf, tPlus, parameters.bipedParams);
+		biped.parameters.base.State plant = parameters.plant.y();
+		biped.parameters.base.State x0 = BipedComputer.computeChangeAtImpact(plant, parameters.bipedParams.bipedParams);
+		biped.parameters.base.State xf = parameters.bipedParams.equilibParams.getFinalState();
+		double tPlus = BipedComputer.computeTimeToNextImpactStep(parameters.reference.y(),
+				parameters.bipedParams.bipedParams);
+		TrajectoryParameters params = TrajectoryParameters.compute(x0, xf, tPlus, parameters.bipedParams.bipedParams);
 		return params;
+	}
+
+	@Override
+	public TrajectoryParameters u() {
+
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

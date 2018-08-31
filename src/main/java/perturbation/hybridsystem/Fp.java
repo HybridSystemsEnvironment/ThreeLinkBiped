@@ -1,25 +1,12 @@
 
 package perturbation.hybridsystem;
 
-import edu.ucsc.cross.hse.core.modeling.FlowMap;
+import edu.ucsc.cross.hse.core.hybridsystem.input.FlowMap;
 
 /**
  * A flow map
  */
-public class Fp implements FlowMap<PerturbState> {
-
-	/**
-	 * Parameters
-	 */
-	public Parameters parameters;
-
-	/**
-	 * Constructor for flow map
-	 */
-	public Fp(Parameters parameters) {
-
-		this.parameters = parameters;
-	}
+public class Fp implements FlowMap<State, Parameters> {
 
 	/**
 	 * Flow map
@@ -30,7 +17,7 @@ public class Fp implements FlowMap<PerturbState> {
 	 *            state derivative values
 	 */
 	@Override
-	public void F(PerturbState x, PerturbState x_dot) {
+	public void F(State x, State x_dot, Parameters parameters) {
 
 		// compute x_dot values here
 	}

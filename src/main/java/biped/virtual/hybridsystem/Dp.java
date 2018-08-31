@@ -2,25 +2,13 @@
 package biped.virtual.hybridsystem;
 
 import biped.computations.BipedComputer;
-import edu.ucsc.cross.hse.core.modeling.JumpSet;
+import biped.parameters.virtual.State;
+import edu.ucsc.cross.hse.core.hybridsystem.input.JumpSet;
 
 /**
  * A jump set
  */
-public class Dp implements JumpSet<State> {
-
-	/**
-	 * Parameters
-	 */
-	public Parameters parameters;
-
-	/**
-	 * Constructor for jump set
-	 */
-	public Dp(Parameters parameters) {
-
-		this.parameters = parameters;
-	}
+public class Dp implements JumpSet<State, Parameters> {
 
 	/**
 	 * Flow set
@@ -29,18 +17,10 @@ public class Dp implements JumpSet<State> {
 	 *            current state
 	 */
 	@Override
-	public boolean D(State x) {
+	public boolean D(State x, Parameters parameters) {
 
-		boolean inD = false; // add logic to determine if x in jump set
-		biped.hybridsystem.State trigger = x.bipedState;
-		double hVal = BipedComputer.computeStepRemainder(trigger, parameters.bipedParams);
-		if (!x.equals(parameters.bipedParams.connections.getReference().y())) {
-			trigger = parameters.bipedParams.connections.getInput().y();
-
-			hVal = BipedComputer.computeStepRemainder(trigger, parameters.bipedParams, true);
-
-		}
-		inD = inD || hVal <= 0.0;
+		double hVal = BipedComputer.computeStepRemainder(x.bipedState, parameters.bipedParams.bipedParams);
+		boolean inD = hVal <= 0.0 && x.bipedState.plantedLegVelocity > 0.0;
 		return inD;
 	}
 

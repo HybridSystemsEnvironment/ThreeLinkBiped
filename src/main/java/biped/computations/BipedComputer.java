@@ -4,12 +4,13 @@ package biped.computations;
 import java.util.HashMap;
 
 import Jama.Matrix;
-import biped.hybridsystem.Parameters;
-import biped.hybridsystem.State;
-import edu.ucsc.hsl.hse.model.biped.threelink.factories.Zero;
+import biped.parameters.base.Parameters;
+import biped.parameters.base.State;
+import biped.plant.hybridsystem.Port;
+import edu.ucsc.cross.hse.core.modeling.Output;
+import edu.ucsc.cross.hse.core.zerodetect.Zero;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedMotion;
-import edu.ucsc.hsl.hse.model.biped.threelink.states.PerturbationState;
 import edu.ucsc.hsl.hse.tools.math.shortcuts.MathShortcuts;
 
 public class BipedComputer {
@@ -250,24 +251,24 @@ public class BipedComputer {
 		return controlUnbounded;
 	}
 
-	public static double computeStepRemainder(biped.hybridsystem.State state,
-			biped.hybridsystem.Parameters parameters) {
+	public static double computeStepRemainder(biped.parameters.base.State state,
+			biped.parameters.base.Parameters parameters) {
 
-		return computeStepRemainder(state, parameters, false);
+		return computeStepRemainder(state, parameters, new Port<perturbation.hybridsystem.State>());
 	}
 
-	public static double computeStepRemainder(biped.hybridsystem.State state, biped.hybridsystem.Parameters parameters,
-			boolean perturb) {
+	public static double computeStepRemainder(biped.parameters.base.State state,
+			biped.parameters.base.Parameters parameters, Output<perturbation.hybridsystem.State> perturb) {
 
 		double perturbAngle = 0.0;
-		if (parameters.connections.getPerturbation() != null && perturb) {
-			perturbAngle = parameters.connections.getPerturbation().y().perturbationAngle;
+		if (perturb.y() != null) {
+			perturbAngle = perturb.y().perturbationAngle;
 		}
 		double hVal = (parameters.stepAngle + perturbAngle) - state.plantedLegAngle;
 		return hVal;
 	}
 
-	public static Double computeTimeToNextImpactStep(biped.virtual.hybridsystem.State biped_state, Parameters params) {
+	public static Double computeTimeToNextImpactStep(biped.parameters.virtual.State biped_state, Parameters params) {
 
 		Double stepTime = params.getStepTime();
 		Double timeToNext = stepTime - biped_state.trajTimer;
@@ -280,7 +281,8 @@ public class BipedComputer {
 		return timeToNext;
 	}
 
-	public static boolean isImpactOccurring(State biped_state, Parameters params, PerturbationState perturbation) {
+	public static boolean isImpactOccurring(State biped_state, Parameters params,
+			perturbation.hybridsystem.State perturbation) {
 
 		boolean stepAngleReached = ((params.stepAngle + perturbation.perturbationAngle) <= biped_state.plantedLegAngle);//
 
@@ -291,7 +293,7 @@ public class BipedComputer {
 
 		// boolean stepAngleReached = (params.stepAngle <=
 		// biped_state.plantedLegAngle);//
-		boolean stepAngleReached = (Zero.equal(params.stepAngle - biped_state.plantedLegAngle)
+		boolean stepAngleReached = (Zero.equal(biped_state, params.stepAngle - biped_state.plantedLegAngle)
 				&& biped_state.plantedLegVelocity >= 0.0);//
 		return stepAngleReached;
 	}

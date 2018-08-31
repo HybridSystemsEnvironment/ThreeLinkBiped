@@ -1,0 +1,3724 @@
+[21:42:20.004][info] Environment started  [382/706 mB]
+[21:42:20.167][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [70/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:232)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.173][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [70/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:232)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.181][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator.initializeStep(AdaptiveStepsizeIntegrator.java:279)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:246)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.188][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator.initializeStep(AdaptiveStepsizeIntegrator.java:279)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:246)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.193][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.197][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.204][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.211][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.216][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.220][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.225][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.230][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.233][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.235][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.239][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.243][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.248][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.251][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.254][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.257][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.262][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.267][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.269][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.273][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.275][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.280][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.286][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.288][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:273)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.290][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.doFinalize(DormandPrince853StepInterpolator.java:427)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.finalizeStep(AbstractStepInterpolator.java:489)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.computeInterpolatedStateAndDerivatives(DormandPrince853StepInterpolator.java:332)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.evaluateCompleteInterpolatedState(AbstractStepInterpolator.java:409)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.getInterpolatedState(AbstractStepInterpolator.java:416)
+	at org.apache.commons.math3.ode.events.EventState.getCompleteState(EventState.java:204)
+	at org.apache.commons.math3.ode.events.EventState.reinitializeBegin(EventState.java:171)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:333)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.296][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.doFinalize(DormandPrince853StepInterpolator.java:427)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.finalizeStep(AbstractStepInterpolator.java:489)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.computeInterpolatedStateAndDerivatives(DormandPrince853StepInterpolator.java:332)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.evaluateCompleteInterpolatedState(AbstractStepInterpolator.java:409)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.getInterpolatedState(AbstractStepInterpolator.java:416)
+	at org.apache.commons.math3.ode.events.EventState.getCompleteState(EventState.java:204)
+	at org.apache.commons.math3.ode.events.EventState.reinitializeBegin(EventState.java:171)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:333)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.298][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.doFinalize(DormandPrince853StepInterpolator.java:437)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.finalizeStep(AbstractStepInterpolator.java:489)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.computeInterpolatedStateAndDerivatives(DormandPrince853StepInterpolator.java:332)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.evaluateCompleteInterpolatedState(AbstractStepInterpolator.java:409)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.getInterpolatedState(AbstractStepInterpolator.java:416)
+	at org.apache.commons.math3.ode.events.EventState.getCompleteState(EventState.java:204)
+	at org.apache.commons.math3.ode.events.EventState.reinitializeBegin(EventState.java:171)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:333)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.335][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.doFinalize(DormandPrince853StepInterpolator.java:437)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.finalizeStep(AbstractStepInterpolator.java:489)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.computeInterpolatedStateAndDerivatives(DormandPrince853StepInterpolator.java:332)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.evaluateCompleteInterpolatedState(AbstractStepInterpolator.java:409)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.getInterpolatedState(AbstractStepInterpolator.java:416)
+	at org.apache.commons.math3.ode.events.EventState.getCompleteState(EventState.java:204)
+	at org.apache.commons.math3.ode.events.EventState.reinitializeBegin(EventState.java:171)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:333)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.338][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>1</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>1</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>1</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>0.0</plantedLegVelocity>
+      <swingLegVelocity>0.0</swingLegVelocity>
+      <torsoVelocity>0.0</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>6</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>4</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>0.0</plantedLegVelocity>
+    <swingLegVelocity>0.0</swingLegVelocity>
+    <torsoVelocity>0.0</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:37)
+	at biped.virtual.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.doFinalize(DormandPrince853StepInterpolator.java:447)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.finalizeStep(AbstractStepInterpolator.java:489)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.computeInterpolatedStateAndDerivatives(DormandPrince853StepInterpolator.java:332)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.evaluateCompleteInterpolatedState(AbstractStepInterpolator.java:409)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.getInterpolatedState(AbstractStepInterpolator.java:416)
+	at org.apache.commons.math3.ode.events.EventState.getCompleteState(EventState.java:204)
+	at org.apache.commons.math3.ode.events.EventState.reinitializeBegin(EventState.java:171)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:333)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.340][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<biped.parameters.virtual.State>
+  <properties>
+    <index>2</index>
+    <name>State</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <trajTimer>0.0</trajTimer>
+  <trajectoryParameters>
+    <properties>
+      <index>2</index>
+      <name>TrajectoryParameters</name>
+      <storeTrajectory>false</storeTrajectory>
+    </properties>
+    <B0>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B0>
+    <B1>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>PLANTED_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>TORSO</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+      <entry>
+        <edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>SWING_LEG</edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedLimb>
+        <double>NaN</double>
+      </entry>
+    </B1>
+    <initialState>
+      <properties>
+        <index>2</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>-0.0</plantedLegAngle>
+      <swingLegAngle>0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </initialState>
+    <finalState>
+      <properties>
+        <index>7</index>
+        <name>Biped State</name>
+        <storeTrajectory>true</storeTrajectory>
+      </properties>
+      <plantedLegAngle>0.0</plantedLegAngle>
+      <swingLegAngle>-0.0</swingLegAngle>
+      <torsoAngle>0.0</torsoAngle>
+      <plantedLegVelocity>NaN</plantedLegVelocity>
+      <swingLegVelocity>NaN</swingLegVelocity>
+      <torsoVelocity>NaN</torsoVelocity>
+    </finalState>
+  </trajectoryParameters>
+  <bipedState>
+    <properties>
+      <index>5</index>
+      <name>Biped State</name>
+      <storeTrajectory>true</storeTrajectory>
+    </properties>
+    <plantedLegAngle>-0.0</plantedLegAngle>
+    <swingLegAngle>0.0</swingLegAngle>
+    <torsoAngle>0.0</torsoAngle>
+    <plantedLegVelocity>NaN</plantedLegVelocity>
+    <swingLegVelocity>NaN</swingLegVelocity>
+    <torsoVelocity>NaN</torsoVelocity>
+  </bipedState>
+</biped.parameters.virtual.State>  [71/1217 mB]
+java.lang.RuntimeException: Matrix is singular.
+	at Jama.LUDecomposition.solve(LUDecomposition.java:282)
+	at Jama.Matrix.solve(Matrix.java:815)
+	at Jama.Matrix.inverse(Matrix.java:833)
+	at biped.reference.control.VirtualFlowController.computeControlInput(VirtualFlowController.java:30)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:56)
+	at biped.reference.control.VirtualFlowController.k(VirtualFlowController.java:1)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:38)
+	at biped.reference.hybridsystem.Fp.F(Fp.java:1)
+	at biped.app.HybridSystem.F(HybridSystem.java:135)
+	at biped.app.HybridSystem.F(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.f(HybridSystemInterface.java:96)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:118)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.processors.ODEInterface.computeDerivatives(ODEInterface.java:93)
+	at org.apache.commons.math3.ode.ExpandableStatefulODE.computeDerivatives(ExpandableStatefulODE.java:118)
+	at org.apache.commons.math3.ode.AbstractIntegrator.computeDerivatives(AbstractIntegrator.java:296)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.doFinalize(DormandPrince853StepInterpolator.java:447)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.finalizeStep(AbstractStepInterpolator.java:489)
+	at org.apache.commons.math3.ode.nonstiff.DormandPrince853StepInterpolator.computeInterpolatedStateAndDerivatives(DormandPrince853StepInterpolator.java:332)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.evaluateCompleteInterpolatedState(AbstractStepInterpolator.java:409)
+	at org.apache.commons.math3.ode.sampling.AbstractStepInterpolator.getInterpolatedState(AbstractStepInterpolator.java:416)
+	at org.apache.commons.math3.ode.events.EventState.getCompleteState(EventState.java:204)
+	at org.apache.commons.math3.ode.events.EventState.reinitializeBegin(EventState.java:171)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:333)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[21:42:20.366][info] status: 0.00%  complete : sim time = 0.00 : jumps = 0  [71/1217 mB]

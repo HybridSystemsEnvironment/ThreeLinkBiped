@@ -1,0 +1,8 @@
+[21:57:30.661][info] Environment started  [376/706 mB]
+[21:57:30.910][info] status: 0.00%  complete : sim time = 0.00 : jumps = 0  [71/1223 mB]
+[21:57:33.311][info] status: 10.00%  complete : sim time = 2.50 : jumps = 1  [839/1223 mB]
+[21:57:35.649][info] status: 20.01%  complete : sim time = 5.00 : jumps = 5  [581/1229 mB]
+[21:57:37.879][info] status: 30.01%  complete : sim time = 7.50 : jumps = 9  [339/1464 mB]
+[21:57:39.598][info] status: 40.01%  complete : sim time = 10.00 : jumps = 11  [1077/1464 mB]
+[21:57:39.656][info] Environment stopped, total runtime = 9.012996542005567 seconds  [1101/1464 mB]
+[21:57:53.653][info] Successfully saved global storage file /Users/beshort/Desktop/ddd/aaa.xml  [1234/1464 mB]

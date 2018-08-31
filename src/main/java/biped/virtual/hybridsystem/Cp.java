@@ -2,25 +2,13 @@
 package biped.virtual.hybridsystem;
 
 import biped.computations.BipedComputer;
-import edu.ucsc.cross.hse.core.modeling.FlowSet;
+import biped.parameters.virtual.State;
+import edu.ucsc.cross.hse.core.hybridsystem.input.FlowSet;
 
 /**
  * A flow set
  */
-public class Cp implements FlowSet<State> {
-
-	/**
-	 * Parameters
-	 */
-	public Parameters parameters;
-
-	/**
-	 * Constructor for flow set
-	 */
-	public Cp(Parameters parameters) {
-
-		this.parameters = parameters;
-	}
+public class Cp implements FlowSet<State, Parameters> {
 
 	/**
 	 * Flow set
@@ -29,11 +17,11 @@ public class Cp implements FlowSet<State> {
 	 *            current state
 	 */
 	@Override
-	public boolean C(State x) {
+	public boolean C(State x, Parameters parameters) {
 
-		boolean inC = true;
-		double hVal = BipedComputer.computeStepRemainder(x.bipedState, parameters.bipedParams);
-		inC = inC || hVal >= 0.0;
+		boolean inC = false;
+		double hVal = BipedComputer.computeStepRemainder(x.bipedState, parameters.bipedParams.bipedParams);
+		inC = hVal >= 0.0;
 
 		return inC;
 	}

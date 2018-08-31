@@ -1,25 +1,12 @@
 
 package perturbation.hybridsystem;
 
-import edu.ucsc.cross.hse.core.modeling.JumpSet;
+import edu.ucsc.cross.hse.core.hybridsystem.input.JumpSet;
 
 /**
  * A jump set
  */
-public class Dp implements JumpSet<PerturbState> {
-
-	/**
-	 * Parameters
-	 */
-	public Parameters parameters;
-
-	/**
-	 * Constructor for jump set
-	 */
-	public Dp(Parameters parameters) {
-
-		this.parameters = parameters;
-	}
+public class Dp implements JumpSet<State, Parameters> {
 
 	/**
 	 * Flow set
@@ -28,11 +15,10 @@ public class Dp implements JumpSet<PerturbState> {
 	 *            current state
 	 */
 	@Override
-	public boolean D(PerturbState x) {
+	public boolean D(State x, Parameters parameters) {
 
-		biped.hybridsystem.State trigger = parameters.bipedParameters.connections.getPlant().getState();
-
-		boolean inD = parameters.bipedParameters.connections.getPlant().D(trigger); // add logic to determine if x in
+		biped.parameters.base.State trigger = parameters.plant.y().getState();
+		boolean inD = parameters.plant.y().D(trigger); // add logic to determine if x in
 
 		return inD;
 	}
