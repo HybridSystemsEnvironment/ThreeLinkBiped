@@ -33,7 +33,8 @@ public class Cp implements FlowSet<State> {
 
 		boolean inC = true;
 		double hVal = BipedComputer.computeStepRemainder(x.bipedState, parameters.bipedParams);
-		inC = hVal >= 0.0;
+		inC = inC || hVal >= 0.0;
+
 		return inC;
 	}
 

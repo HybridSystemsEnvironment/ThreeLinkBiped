@@ -32,6 +32,8 @@ public class Parameters extends DataStructure {
 
 	public Double walkSpeed;
 
+	public Connections connections;
+
 	public Parameters() {
 
 		legMass = 0.0;
@@ -44,6 +46,7 @@ public class Parameters extends DataStructure {
 		torsoLength = 0.0;
 		stepTimeSet = null;
 		gravity = 0.0;
+		connections = new Connections();
 	}
 
 	public Double getFinalAngle(BipedLimb limb) {

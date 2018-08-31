@@ -1,13 +1,12 @@
 
-package biped.hybridsystem;
+package perturbation.hybridsystem;
 
-import biped.computations.BipedComputer;
 import edu.ucsc.cross.hse.core.modeling.FlowSet;
 
 /**
  * A flow set
  */
-public class Cp implements FlowSet<State> {
+public class Cp implements FlowSet<PerturbState> {
 
 	/**
 	 * Parameters
@@ -20,6 +19,7 @@ public class Cp implements FlowSet<State> {
 	public Cp(Parameters parameters) {
 
 		this.parameters = parameters;
+
 	}
 
 	/**
@@ -29,11 +29,9 @@ public class Cp implements FlowSet<State> {
 	 *            current state
 	 */
 	@Override
-	public boolean C(State x) {
+	public boolean C(PerturbState x) {
 
-		boolean inC = false;
-		double hVal = BipedComputer.computeStepRemainder(x, parameters, true);
-		inC = hVal >= 0.0;
+		boolean inC = true; // add logic to determine if x in flow set
 		return inC;
 	}
 

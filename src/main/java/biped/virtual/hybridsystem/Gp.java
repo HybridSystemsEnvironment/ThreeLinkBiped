@@ -40,7 +40,14 @@ public class Gp implements JumpMap<State> {
 	@Override
 	public void G(State x, State x_plus) {
 
-		BipedComputer.computeChangeAtImpact(x.bipedState, x_plus.bipedState, parameters.bipedParams);
+		biped.hybridsystem.State state = BipedComputer.computeChangeAtImpact(x.bipedState, parameters.bipedParams);
+
+		x_plus.bipedState.plantedLegAngle = state.plantedLegAngle;
+		x_plus.bipedState.swingLegAngle = state.swingLegAngle;
+		x_plus.bipedState.torsoAngle = state.torsoAngle;
+		x_plus.bipedState.plantedLegVelocity = state.plantedLegVelocity;
+		x_plus.bipedState.swingLegVelocity = state.swingLegVelocity;
+		x_plus.bipedState.torsoVelocity = state.torsoVelocity;
 		TrajectoryParameters newTrajParams = controller.k(x);
 		x_plus.trajectoryParameters.B0 = newTrajParams.B0;
 		x_plus.trajectoryParameters.B1 = newTrajParams.B1;

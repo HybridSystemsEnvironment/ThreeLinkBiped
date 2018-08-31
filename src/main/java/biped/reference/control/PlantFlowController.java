@@ -6,7 +6,6 @@ import biped.computations.BipedComputer;
 import biped.hybridsystem.Parameters;
 import biped.hybridsystem.State;
 import edu.ucsc.cross.hse.core.modeling.Controller;
-import edu.ucsc.cross.hse.core.modeling.Output;
 import edu.ucsc.hsl.hse.model.biped.threelink.specifications.BipedMotion;
 
 public class PlantFlowController implements Controller<biped.hybridsystem.State, Matrix> {
@@ -16,8 +15,6 @@ public class PlantFlowController implements Controller<biped.hybridsystem.State,
 	public Double kOne;
 
 	public Double kTwo;
-
-	Output<biped.virtual.hybridsystem.State> virtual;
 
 	public PlantFlowController(Parameters parameters) {
 
@@ -63,18 +60,12 @@ public class PlantFlowController implements Controller<biped.hybridsystem.State,
 	@Override
 	public Matrix k(State state) {
 
-		Matrix virtualAcceleration = VirtualFlowController.computeOrbitTrackingAccelerations(virtual.y());
-		Matrix controlAccel = virtualAcceleration.plusEquals(getComputedAcceleration(state, virtual.y().bipedState));
+		Matrix virtualAcceleration = VirtualFlowController
+				.computeOrbitTrackingAccelerations(parameters.connections.getVirtual().y());
+		Matrix controlAccel = virtualAcceleration
+				.plusEquals(getComputedAcceleration(state, parameters.connections.getVirtual().y().bipedState));
 
 		return computeControlInput(state, controlAccel);
 	}
 
-	/**
-	 * @param virtual
-	 *            the virtual to set
-	 */
-	public void connectVirtualSystem(Output<biped.virtual.hybridsystem.State> virtual) {
-
-		this.virtual = virtual;
-	}
 }

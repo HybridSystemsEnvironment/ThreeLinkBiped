@@ -253,7 +253,17 @@ public class BipedComputer {
 	public static double computeStepRemainder(biped.hybridsystem.State state,
 			biped.hybridsystem.Parameters parameters) {
 
-		double hVal = parameters.stepAngle - state.plantedLegAngle;
+		return computeStepRemainder(state, parameters, false);
+	}
+
+	public static double computeStepRemainder(biped.hybridsystem.State state, biped.hybridsystem.Parameters parameters,
+			boolean perturb) {
+
+		double perturbAngle = 0.0;
+		if (parameters.connections.getPerturbation() != null && perturb) {
+			perturbAngle = parameters.connections.getPerturbation().y().perturbationAngle;
+		}
+		double hVal = (parameters.stepAngle + perturbAngle) - state.plantedLegAngle;
 		return hVal;
 	}
 

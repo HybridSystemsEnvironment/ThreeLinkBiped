@@ -1,0 +1,22 @@
+[19:07:36.960][info] Environment started  [379/706 mB]
+[19:07:37.136][info] status: 0.00%  complete : sim time = 0.00 : jumps = 0  [88/1214 mB]
+[19:07:39.467][info] status: 10.00%  complete : sim time = 2.50 : jumps = 2  [740/1214 mB]
+[19:07:42.023][info] status: 20.01%  complete : sim time = 5.00 : jumps = 4  [386/1218 mB]
+[19:07:43.675][info] status: 30.01%  complete : sim time = 7.50 : jumps = 6  [1019/1218 mB]
+[19:07:45.257][info] status: 40.01%  complete : sim time = 10.00 : jumps = 8  [652/1451 mB]
+[19:07:46.961][info] monitor : 49.57% complete : sim time = 12.39 : jumps = 10  [1243/1451 mB]
+[19:07:47.072][info] status: 50.01%  complete : sim time = 12.50 : jumps = 10  [1291/1451 mB]
+[19:07:48.823][info] status: 60.02%  complete : sim time = 15.00 : jumps = 12  [654/1451 mB]
+[19:07:50.488][info] status: 70.02%  complete : sim time = 17.50 : jumps = 16  [1290/1451 mB]
+[19:07:51.627][info] status: 80.02%  complete : sim time = 20.01 : jumps = 18  [669/1449 mB]
+[19:07:52.694][info] status: 90.02%  complete : sim time = 22.51 : jumps = 20  [1296/1449 mB]
+[19:07:53.820][info] Environment stopped, total runtime = 16.87907609398826 seconds  [677/1337 mB]
+[19:08:02.615][info] save definition cancelled  [794/1337 mB]
+[19:08:02.615][error] file location is null, unable to save  [794/1337 mB]
+[19:08:02.615][error] Unable to save file: null  [794/1337 mB]
+java.lang.NullPointerException
+	at edu.ucsc.cross.hse.core.file.CollectionFile.saveToFile(CollectionFile.java:220)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.saveToFile(HSEnvironment.java:300)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.saveToFile(HSEnvironment.java:273)
+	at biped.application.PostProcessor.processEnvironmentData(PostProcessor.java:35)
+	at biped.application.HSEApplication.main(HSEApplication.java:29)

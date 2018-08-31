@@ -1,0 +1,8 @@
+[18:19:52.565][info] Environment started  [380/706 mB]
+[18:19:52.766][info] status: 0.00%  complete : sim time = 0.00 : jumps = 0  [88/1223 mB]
+[18:19:54.681][info] status: 10.00%  complete : sim time = 2.50 : jumps = 1  [716/1223 mB]
+[18:19:56.251][info] status: 20.01%  complete : sim time = 5.00 : jumps = 2  [182/1228 mB]
+[18:19:57.431][info] status: 30.01%  complete : sim time = 7.50 : jumps = 3  [635/1228 mB]
+[18:19:58.421][info] status: 40.01%  complete : sim time = 10.00 : jumps = 4  [67/1461 mB]
+[18:19:58.649][info] Environment stopped, total runtime = 6.100445247022435 seconds  [187/1461 mB]
+[18:20:08.743][info] Successfully saved global storage file /Users/beshort/Desktop/ddd/Untitled.xml  [299/1461 mB]

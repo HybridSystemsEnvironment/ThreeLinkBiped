@@ -16,7 +16,6 @@ import biped.virtual.hybridsystem.TrajectoryParameters;
 import edu.ucsc.cross.hse.core.environment.HSEnvironment;
 import edu.ucsc.cross.hse.core.modeling.Controller;
 import edu.ucsc.cross.hse.core.modeling.HybridSys;
-import edu.ucsc.cross.hse.core.modeling.Output;
 import edu.ucsc.cross.hse.core.variable.RandomVariable;
 
 /**
@@ -36,6 +35,8 @@ public class ContentLoader {
 		Parameters parameters = generateParameters(true);
 		// Initialize the hybrid systems
 		createSystems(parameters, environment);
+
+		createPerturbationSystem(parameters, environment, .3, true);
 
 	}
 
@@ -84,21 +85,20 @@ public class ContentLoader {
 		return state;
 	}
 
-	public static State generateReferenceState(Parameters parameters) {
-
-		State state = new State(parameters.equilibParams.initialState, parameters);
-		return state;
-	}
-
 	public static void createSystems(Parameters parameters, HSEnvironment environment) {
 
 		// Initialize the state
-		State referenceState = generateState(parameters, false);
+		State referenceState = new State(parameters.equilibParams.getInitialState(), parameters);
 		// Initialize the state
 		State virtualState = generateState(parameters, false);
+
+		referenceState.bipedState.getProperties().setName("Reference");
+
+		virtualState.bipedState.getProperties().setName("Virtual");
 		// Initialize the state
 		biped.hybridsystem.State plantState = generateState(parameters, false).bipedState;
 
+		plantState.getProperties().setName("Physical");
 		// Initialize the reference flow controller
 		VirtualFlowController referenceFlowControl = new VirtualFlowController(parameters);
 		// Initialize the reference jump controller
@@ -119,14 +119,10 @@ public class ContentLoader {
 				plantFlowControl);
 		// Initialize the virtual system
 		HybridSys<State> virtualSystem = createVirtualSystem(virtualState, parameters, virtualFlowControl,
-				virtualJumpControl, plantSystem);
+				virtualJumpControl);
 
-		// Connect virtual to plant
-		virtualJumpControl.connectPlantSystem(plantSystem);
-		// Connect virtual to reference
-		virtualJumpControl.connectReferenceSystem(referenceSystem);
-		// Connect plant to virtual
-		plantFlowControl.connectVirtualSystem(virtualSystem);
+		parameters.bipedParams.connections.setConnections(null, plantSystem, referenceSystem, virtualSystem,
+				plantSystem);
 
 		// Add systems to the environment
 		environment.getSystems().add(referenceSystem, virtualSystem, plantSystem);
@@ -154,26 +150,7 @@ public class ContentLoader {
 		// Initialize the jump set
 		Dp d = new Dp(parameters);
 		// Initialize the hybrid system
-		HybridSys<State> system = new HybridSys<State>(
-				new State(parameters.equilibParams.getInitialState(), parameters), f, g, c, d);
-		return system;
-	}
-
-	/**
-	 * Create the hybrid system
-	 * 
-	 * @param state
-	 *            system state
-	 * @param parameters
-	 *            system parameters
-	 * @return initialized hybrid system
-	 */
-	public static HybridSys<State> createVirtualSystem(State state, Parameters parameters,
-			Controller<State, Matrix> continuous_controller,
-			Controller<State, TrajectoryParameters> discrete_controller, Output<biped.hybridsystem.State> plant) {
-
-		HybridSys<State> system = createVirtualSystem(state, parameters, continuous_controller, discrete_controller);
-		system.setJumpSet(new Dp(parameters, plant));
+		HybridSys<State> system = new HybridSys<State>(state, f, g, c, d);
 		return system;
 	}
 
@@ -201,8 +178,48 @@ public class ContentLoader {
 		// Initialize the hybrid system
 		HybridSys<biped.hybridsystem.State> system = new HybridSys<biped.hybridsystem.State>(state, f, g, c, d,
 				parameters);
-
 		return system;
 	}
 
+	public static void createPerturbationSystem(Parameters parameters, HSEnvironment environment,
+			double perturb_percent, boolean randomize) {
+
+		HybridSys<perturbation.hybridsystem.PerturbState> perturb = createPerturbationSystem(parameters.bipedParams,
+				perturb_percent, randomize);
+
+		parameters.bipedParams.connections.setPerturbation(perturb);
+
+		// Add systems to the environment
+		environment.getSystems().add(perturb);
+	}
+
+	/**
+	 * Create the hybrid system
+	 * 
+	 * @param state
+	 *            system state
+	 * @param parameters
+	 *            system parameters
+	 * @return initialized hybrid system
+	 */
+	public static HybridSys<perturbation.hybridsystem.PerturbState> createPerturbationSystem(
+			biped.hybridsystem.Parameters parameters, double perturb_percent, boolean randomize) {
+
+		perturbation.hybridsystem.Parameters params = new perturbation.hybridsystem.Parameters(parameters,
+				perturb_percent, randomize);
+		perturbation.hybridsystem.PerturbState state = new perturbation.hybridsystem.PerturbState(perturb_percent);
+		// Initialize the flow map
+		perturbation.hybridsystem.Fp f = new perturbation.hybridsystem.Fp(params);
+		// Initialize the jump map
+		perturbation.hybridsystem.Gp g = new perturbation.hybridsystem.Gp(params);
+		// Initialize the flow set
+		perturbation.hybridsystem.Cp c = new perturbation.hybridsystem.Cp(params);
+		// Initialize the jump set
+		perturbation.hybridsystem.Dp d = new perturbation.hybridsystem.Dp(params);
+		// Initialize the hybrid system
+		HybridSys<perturbation.hybridsystem.PerturbState> system = new HybridSys<perturbation.hybridsystem.PerturbState>(
+				state, f, g, c, d, parameters);
+
+		return system;
+	}
 }

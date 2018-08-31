@@ -37,7 +37,6 @@ public class Gp implements JumpMap<State> {
 
 		BipedComputer.computeChangeAtImpact(x, x_plus, parameters);
 		System.out.println(XMLParser.serializeObject(this));
-		// System.exit(0);
 	}
 
 }
