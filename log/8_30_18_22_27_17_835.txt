@@ -1,0 +1,63 @@
+[22:27:17.856][info] Environment started  [377/706 mB]
+[22:27:18.063][info] status: 0.00%  complete : sim time = 0.00 : jumps = 0  [71/1222 mB]
+[22:27:19.330][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<perturbation.hybridsystem.State>
+  <properties>
+    <index>0</index>
+    <name>perturbation</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <perturbationAngle>0.2</perturbationAngle>
+  <previousPerturbationAngle>0.0</previousPerturbationAngle>
+</perturbation.hybridsystem.State>  [518/1222 mB]
+java.lang.NullPointerException
+	at perturbation.hybridsystem.Gp.G(Gp.java:23)
+	at perturbation.hybridsystem.Gp.G(Gp.java:1)
+	at biped.app.HybridSystem.G(HybridSystem.java:144)
+	at biped.app.HybridSystem.G(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)
+[22:27:20.675][info] status: 10.00%  complete : sim time = 2.50 : jumps = 2  [853/1222 mB]
+[22:27:21.563][error] Apply Dynamics Error on class biped.app.HybridSystem with state: 
+<perturbation.hybridsystem.State>
+  <properties>
+    <index>0</index>
+    <name>perturbation</name>
+    <storeTrajectory>true</storeTrajectory>
+  </properties>
+  <perturbationAngle>0.2</perturbationAngle>
+  <previousPerturbationAngle>0.0</previousPerturbationAngle>
+</perturbation.hybridsystem.State>  [1034/1222 mB]
+java.lang.NullPointerException
+	at perturbation.hybridsystem.Gp.G(Gp.java:23)
+	at perturbation.hybridsystem.Gp.G(Gp.java:1)
+	at biped.app.HybridSystem.G(HybridSystem.java:144)
+	at biped.app.HybridSystem.G(HybridSystem.java:1)
+	at edu.ucsc.cross.hse.core.processors.HybridSystemInterface.g(HybridSystemInterface.java:114)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.applyDynamics(DynamicsEvaluator.java:103)
+	at edu.ucsc.cross.hse.core.processors.DynamicsEvaluator.evaluateDynamics(DynamicsEvaluator.java:156)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.executeJumps(DomainMonitor.java:129)
+	at edu.ucsc.cross.hse.core.monitors.DomainMonitor.resetState(DomainMonitor.java:227)
+	at org.apache.commons.math3.ode.events.EventState.reset(EventState.java:396)
+	at org.apache.commons.math3.ode.AbstractIntegrator.acceptStep(AbstractIntegrator.java:398)
+	at org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaIntegrator.integrate(EmbeddedRungeKuttaIntegrator.java:302)
+	at org.apache.commons.math3.ode.AbstractIntegrator.integrate(AbstractIntegrator.java:252)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.runIntegrator(IntegrationManager.java:153)
+	at edu.ucsc.cross.hse.core.monitors.IntegrationManager.start(IntegrationManager.java:91)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.start(EngineSupervisor.java:381)
+	at edu.ucsc.cross.hse.core.monitors.EngineSupervisor.run(EngineSupervisor.java:342)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.run(HSEnvironment.java:232)
+	at biped.app.HSEApplication.main(HSEApplication.java:27)

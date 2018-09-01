@@ -1,0 +1,16 @@
+[23:43:17.996][info] Environment started  [356/706 mB]
+[23:43:18.058][info] status: 0.00%  complete : sim time = 0.00 : jumps = 0  [362/706 mB]
+[23:43:19.853][info] status: 10.00%  complete : sim time = 2.00 : jumps = 2  [481/1239 mB]
+[23:43:22.853][info] status: 20.01%  complete : sim time = 4.00 : jumps = 4  [1099/1239 mB]
+[23:43:23.275][info] Environment stopped, total runtime = 5.298112202988705 seconds  [138/1245 mB]
+[23:43:32.674][info] save definition cancelled  [89/1426 mB]
+[23:43:37.762][error] null file location provided, unable to export figure  [102/1426 mB]
+[23:43:39.976][info] save definition cancelled  [114/1426 mB]
+[23:43:39.976][error] file location is null, unable to save  [114/1426 mB]
+[23:43:39.977][error] Unable to save file: null  [114/1426 mB]
+java.lang.NullPointerException
+	at edu.ucsc.cross.hse.core.file.CollectionFile.saveToFile(CollectionFile.java:220)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.saveToFile(HSEnvironment.java:300)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.saveToFile(HSEnvironment.java:273)
+	at edu.ucsc.cross.hse.core.environment.HSEnvironment.saveToFile(HSEnvironment.java:261)
+	at biped.app.HSEApplication.main(HSEApplication.java:87)

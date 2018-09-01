@@ -15,6 +15,10 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 	maven { url "https://jitpack.io" }
+	
+	  flatDir {
+       dirs 'libs'
+   }
 }
 
  configurations.all {
@@ -25,8 +29,9 @@ repositories {
 
 dependencies {
     // The production code uses Guava
-    compile 'com.google.guava:guava:20.0'
-  	compile "com.github.JavaHyEQ:JavaHyEQToolbox:-SNAPSHOT"
+     compile name: 'JavaHyEQToolbox'
+    //compile 'com.google.guava:guava:20.0'
+  	//compile "com.github.JavaHyEQ:JavaHyEQToolbox:-SNAPSHOT"
   	compile "com.github.HybridSystemsEnvironment:MathToolbox:-SNAPSHOT"
       	compile 'net.sourceforge.jeuclid:jeuclid-core:3.1.9'
   
@@ -35,3 +40,17 @@ dependencies {
     compile 'gov.nist.math:jama:1.0.3'
 }
 
+task(runSimulation, dependsOn: 'classes', type: JavaExec) {
+    main = 'biped.app.HSEApplication'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runProcessing, dependsOn: 'classes', type: JavaExec) {
+    main = 'biped.app.PostProcessor'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(generateLoaders, dependsOn: 'classes', type: JavaExec) {
+    main = 'biped.app.SystemLoader'
+    classpath = sourceSets.main.runtimeClasspath
+}

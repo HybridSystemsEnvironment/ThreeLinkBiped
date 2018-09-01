@@ -2,14 +2,15 @@
 package biped.app;
 
 import Jama.Matrix;
-import biped.parameters.base.TrajectoryParameters;
-import biped.parameters.virtual.Parameters;
-import biped.parameters.virtual.State;
+import biped.data.base.TrajectoryParameters;
+import biped.data.virtual.Parameters;
+import biped.data.virtual.State;
+import edu.ucsc.cross.hse.core.hybridsystem.input.HybridSystem;
 import edu.ucsc.cross.hse.core.modeling.Controller;
 
 public class ContentFactory {
 
-	public static biped.parameters.virtual.State generateState(Parameters parameters, Double planted_angle,
+	public static biped.data.virtual.State generateState(Parameters parameters, Double planted_angle,
 			Double swing_angle, Double torso_angle, Double planted_velocity, Double swing_velocity,
 			Double torso_velocity) {
 
@@ -20,7 +21,7 @@ public class ContentFactory {
 
 	public static Parameters generateParameters(boolean randomize) {
 
-		biped.parameters.base.Parameters parameters = new biped.parameters.base.Parameters();
+		biped.data.base.Parameters parameters = new biped.data.base.Parameters();
 		if (!randomize) {
 			parameters.gravity = 9.81;
 			parameters.hipMass = 1.0;
@@ -33,7 +34,7 @@ public class ContentFactory {
 			parameters.useProperTorqueRelationship = true;
 			parameters.walkSpeed = 1.0;
 		} else {
-			parameters = biped.parameters.base.Parameters.getTestParams();
+			parameters = biped.data.base.Parameters.getTestParams();
 		}
 		return new Parameters(parameters);
 
@@ -48,81 +49,81 @@ public class ContentFactory {
 	 *            system parameters
 	 * @return initialized hybrid system
 	 */
-	public static HybridSystem<biped.parameters.base.State, biped.plant.hybridsystem.Parameters> createRealSystem(
-			biped.parameters.base.State state, biped.plant.hybridsystem.Parameters parameters,
-			Controller<biped.parameters.base.State, Matrix> continuous_controller) {
+	public static HybridSystem<biped.data.base.State, biped.system.plant.Parameters> createRealSystem(
+			biped.data.base.State state, biped.system.plant.Parameters parameters,
+			Controller<biped.data.base.State, Matrix> continuous_controller) {
 
 		state.getProperties().setName("Physical");
 
 		// Initialize the flow map
-		biped.plant.hybridsystem.Fp f = new biped.plant.hybridsystem.Fp(continuous_controller);
+		biped.system.plant.Fp f = new biped.system.plant.Fp(continuous_controller);
 		// Initialize the jump map
-		biped.plant.hybridsystem.Gp g = new biped.plant.hybridsystem.Gp();
+		biped.system.plant.Gp g = new biped.system.plant.Gp();
 		// Initialize the flow set
-		biped.plant.hybridsystem.Cp c = new biped.plant.hybridsystem.Cp();
+		biped.system.plant.Cp c = new biped.system.plant.Cp();
 		// Initialize the jump set
-		biped.plant.hybridsystem.Dp d = new biped.plant.hybridsystem.Dp();
+		biped.system.plant.Dp d = new biped.system.plant.Dp();
 		// Initialize the hybrid system
-		HybridSystem<biped.parameters.base.State, biped.plant.hybridsystem.Parameters> system = new HybridSystem<biped.parameters.base.State, biped.plant.hybridsystem.Parameters>(
+		HybridSystem<biped.data.base.State, biped.system.plant.Parameters> system = new HybridSystem<biped.data.base.State, biped.system.plant.Parameters>(
 				state, parameters, f, g, c, d);
 		return system;
 	}
 
-	public static HybridSystem<biped.parameters.virtual.State, biped.virtual.hybridsystem.Parameters> createVirtualSystem(
-			biped.parameters.virtual.State state, biped.virtual.hybridsystem.Parameters parameters,
-			Controller<biped.parameters.virtual.State, Matrix> continuous_controller,
-			Controller<biped.parameters.virtual.State, TrajectoryParameters> discrete_controller) {
+	public static HybridSystem<biped.data.virtual.State, biped.system.virtual.Parameters> createVirtualSystem(
+			biped.data.virtual.State state, biped.system.virtual.Parameters parameters,
+			Controller<biped.data.virtual.State, Matrix> continuous_controller,
+			Controller<biped.data.virtual.State, TrajectoryParameters> discrete_controller) {
 
 		state.bipedState.getProperties().setName("Virtual");
 
 		// Initialize the flow map
-		biped.virtual.hybridsystem.Fp f = new biped.virtual.hybridsystem.Fp(continuous_controller);
+		biped.system.virtual.Fp f = new biped.system.virtual.Fp(continuous_controller);
 		// Initialize the jump map
-		biped.virtual.hybridsystem.Gp g = new biped.virtual.hybridsystem.Gp(discrete_controller);
+		biped.system.virtual.Gp g = new biped.system.virtual.Gp(discrete_controller);
 		// Initialize the flow set
-		biped.virtual.hybridsystem.Cp c = new biped.virtual.hybridsystem.Cp();
+		biped.system.virtual.Cp c = new biped.system.virtual.Cp();
 		// Initialize the jump set
-		biped.virtual.hybridsystem.Dp d = new biped.virtual.hybridsystem.Dp();
+		biped.system.virtual.Dp d = new biped.system.virtual.Dp();
 		// Initialize the hybrid system
-		HybridSystem<biped.parameters.virtual.State, biped.virtual.hybridsystem.Parameters> system = new HybridSystem<biped.parameters.virtual.State, biped.virtual.hybridsystem.Parameters>(
+		HybridSystem<biped.data.virtual.State, biped.system.virtual.Parameters> system = new HybridSystem<biped.data.virtual.State, biped.system.virtual.Parameters>(
 				state, parameters, f, g, c, d);
 		return system;
 	}
 
-	public static HybridSystem<biped.parameters.virtual.State, biped.parameters.virtual.Parameters> createReferenceSystem(
-			biped.parameters.virtual.State state, biped.parameters.virtual.Parameters parameters,
-			Controller<biped.parameters.virtual.State, Matrix> continuous_controller,
-			Controller<biped.parameters.virtual.State, TrajectoryParameters> discrete_controller) {
+	public static HybridSystem<biped.data.virtual.State, biped.data.virtual.Parameters> createReferenceSystem(
+			biped.data.virtual.State state, biped.data.virtual.Parameters parameters,
+			Controller<biped.data.virtual.State, Matrix> continuous_controller,
+			Controller<biped.data.virtual.State, TrajectoryParameters> discrete_controller) {
 
 		state.bipedState.getProperties().setName("Reference");
 
 		// Initialize the flow map
-		biped.reference.hybridsystem.Fp f = new biped.reference.hybridsystem.Fp(continuous_controller);
+		biped.system.reference.Fp f = new biped.system.reference.Fp(continuous_controller);
 		// Initialize the jump map
-		biped.reference.hybridsystem.Gp g = new biped.reference.hybridsystem.Gp(discrete_controller);
+		biped.system.reference.Gp g = new biped.system.reference.Gp(discrete_controller);
 		// Initialize the flow set
-		biped.reference.hybridsystem.Cp c = new biped.reference.hybridsystem.Cp();
+		biped.system.reference.Cp c = new biped.system.reference.Cp();
 		// Initialize the jump set
-		biped.reference.hybridsystem.Dp d = new biped.reference.hybridsystem.Dp();
+		biped.system.reference.Dp d = new biped.system.reference.Dp();
 		// Initialize the hybrid system
-		HybridSystem<biped.parameters.virtual.State, biped.parameters.virtual.Parameters> system = new HybridSystem<biped.parameters.virtual.State, biped.parameters.virtual.Parameters>(
+		HybridSystem<biped.data.virtual.State, biped.data.virtual.Parameters> system = new HybridSystem<biped.data.virtual.State, biped.data.virtual.Parameters>(
 				state, parameters, f, g, c, d);
 		return system;
 	}
 
-	public static HybridSystem<perturbation.hybridsystem.State, perturbation.hybridsystem.Parameters> createPerturbationSystem(
-			perturbation.hybridsystem.State state, perturbation.hybridsystem.Parameters parameters) {
+	public static HybridSystem<biped.system.perturbation.State, biped.system.perturbation.Parameters> createPerturbationSystem(
+			biped.system.perturbation.State state, biped.system.perturbation.Parameters parameters) {
 
 		// Initialize the flow map
-		perturbation.hybridsystem.Fp f = new perturbation.hybridsystem.Fp();
+		biped.system.perturbation.Fp f = new biped.system.perturbation.Fp();
 		// Initialize the jump map
-		perturbation.hybridsystem.Gp g = new perturbation.hybridsystem.Gp();
+		biped.system.perturbation.Gp g = new biped.system.perturbation.Gp();
 		// Initialize the flow set
-		perturbation.hybridsystem.Cp c = new perturbation.hybridsystem.Cp();
+		biped.system.perturbation.Cp c = new biped.system.perturbation.Cp();
 		// Initialize the jump set
-		perturbation.hybridsystem.Dp d = new perturbation.hybridsystem.Dp();
+		biped.system.perturbation.Dp d = new biped.system.perturbation.Dp();
 		// Initialize the hybrid system
-		HybridSystem<perturbation.hybridsystem.State, perturbation.hybridsystem.Parameters> system = new HybridSystem<perturbation.hybridsystem.State, perturbation.hybridsystem.Parameters>(
+		HybridSystem<biped.system.perturbation.State, biped.system.perturbation.Parameters> system = new HybridSystem<biped.system.perturbation.State, biped.system.perturbation.Parameters>(
 				state, parameters, f, g, c, d);
 		return system;
 	}
